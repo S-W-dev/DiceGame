@@ -10,3 +10,15 @@ C:\Users\14356\Desktop\Coding\DiceGame\DiceGame\DiceGame\obj\Debug\DiceGame.cspr
 C:\Users\14356\Desktop\Coding\DiceGame\DiceGame\DiceGame\obj\Debug\DiceGame.csproj.CopyComplete
 C:\Users\14356\Desktop\Coding\DiceGame\DiceGame\DiceGame\obj\Debug\DiceGame.exe
 C:\Users\14356\Desktop\Coding\DiceGame\DiceGame\DiceGame\obj\Debug\DiceGame.pdb
+D:\Repos\DiceGame\bin\Debug\DiceGame.exe.config
+D:\Repos\DiceGame\bin\Debug\DiceGame.exe
+D:\Repos\DiceGame\bin\Debug\DiceGame.pdb
+D:\Repos\DiceGame\bin\Debug\websocket-sharp.dll
+D:\Repos\DiceGame\bin\Debug\websocket-sharp.xml
+D:\Repos\DiceGame\obj\Debug\DiceGame.csprojAssemblyReference.cache
+D:\Repos\DiceGame\obj\Debug\DiceGame.Properties.Resources.resources
+D:\Repos\DiceGame\obj\Debug\DiceGame.csproj.GenerateResource.cache
+D:\Repos\DiceGame\obj\Debug\DiceGame.csproj.CoreCompileInputs.cache
+D:\Repos\DiceGame\obj\Debug\DiceGame.csproj.CopyComplete
+D:\Repos\DiceGame\obj\Debug\DiceGame.exe
+D:\Repos\DiceGame\obj\Debug\DiceGame.pdb

@@ -63,8 +63,30 @@ namespace DiceGame {
             using (var ws = new WebSocket("ws://concretegames.net:667/socket/?EIO=2&transport=websocket")) {
                 Form1.server = ws;
                 Console.WriteLine(ws);
-                ws.OnMessage += (sender, e) =>
-                    Console.WriteLine("Message: " + e.Data);
+                ws.OnMessage += (sender, e) => {
+                    //Console.WriteLine("Message: " + e.Data);
+                    try {
+                        UpdateMessage message = JsonConvert.DeserializeObject<UpdateMessage>(e.Data);
+
+                        //player update
+                        var player = message.player;
+
+                        Console.WriteLine(player.id);
+                        Console.WriteLine(player.name);
+                        Console.WriteLine(player.status);
+                        Console.WriteLine(player.money);
+
+                        //game update
+                        var game = message;
+
+                        Console.WriteLine("Roll: " + game.roll);
+                        Console.WriteLine(game.players[0].status);
+
+                    } catch (Exception x) {
+                        if (e.Data == "connected") SendMessage(ws, "connected");
+                        else Console.WriteLine(x);
+                    }
+                };
                 ws.OnError += (sender, e) =>
                     Console.WriteLine("Error: " + e.Message);
                 ws.OnOpen += (sender, e) =>
@@ -78,5 +100,20 @@ namespace DiceGame {
             //ws.Send(JsonConvert.SerializeObject(new { type = "getframe" }));
             ws.Send(message);
         }
+    }
+
+    public class UpdateMessage {
+        public string type;
+        public Player player;
+
+        public int roll;
+        public Player[] players;
+    }
+
+    public class Player {
+        public string name;
+        public string status;
+        public int id;
+        public int money;
     }
 }

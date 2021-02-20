@@ -74,11 +74,12 @@ namespace DiceGame {
                 }
 
                 for (var i = 0; i < numOfPlayers; i++) {
-                    Label test = new Label();
-                    test.Text = "Test " + i;
-                    playerTable.Controls.Add(test);
-                    test.Dock = DockStyle.Fill;
-                    test.TextAlign = ContentAlignment.MiddleCenter;
+                    var label = new Label();
+                    label.Dock = DockStyle.Fill;
+                    label.TextAlign = ContentAlignment.MiddleCenter;
+                    label.Text = game.players[i].name;
+                    label.Font = new Font("Arial", 25);
+                    playerTable.Controls.Add(label);
                 }
 
                 Controls.Add(playerTable);
@@ -111,17 +112,19 @@ namespace DiceGame {
 
                 for (var i = 0; i < numOfPlayers; i++) {
                     if (i < 4) {
-                        Label test = new Label();
-                        test.Text = "Test " + i;
-                        playerTable1.Controls.Add(test);
-                        test.Dock = DockStyle.Fill;
-                        test.TextAlign = ContentAlignment.MiddleCenter;
+                        var label = new Label();
+                        label.Dock = DockStyle.Fill;
+                        label.TextAlign = ContentAlignment.MiddleCenter;
+                        label.Text = game.players[i].name;
+                        label.Font = new Font("Arial", 25);
+                        playerTable1.Controls.Add(label);
                     } else {
-                        Label test = new Label();
-                        test.Text = "Test " + i;
-                        playerTable2.Controls.Add(test);
-                        test.Dock = DockStyle.Fill;
-                        test.TextAlign = ContentAlignment.MiddleCenter;
+                        var label = new Label();
+                        label.Dock = DockStyle.Fill;
+                        label.TextAlign = ContentAlignment.MiddleCenter;
+                        label.Text = game.players[i].name;
+                        label.Font = new Font("Arial", 25);
+                        playerTable2.Controls.Add(label);
                     }
                 }
 

@@ -28,7 +28,7 @@ namespace DiceGame {
 
             conn = new Thread(ServerComponents.connection);
             conn.Start();
-            while(!connected) {
+            while (!connected) {
                 Thread.Sleep(1);
             }
             ServerComponents.SendMessage(server, "Hello");
@@ -55,91 +55,98 @@ namespace DiceGame {
             }
             UpdatePlayerDisplay();
         }
-
+        public static int lastPlayerCount = 0;
         public static void UpdatePlayerDisplay() {
+            Console.WriteLine(game.players.Length);
+            Console.WriteLine(lastPlayerCount);
+            if (game.players.Length != lastPlayerCount) {
+                lastPlayerCount = game.players.Length;
 
-            try {
-                ActiveForm.Invoke((Action)delegate {
-                    var controls = ActiveForm.Controls.OfType<TableLayoutPanel>();
+                try {
+                    ActiveForm.Invoke((Action)delegate {
+                        var controls = ActiveForm.Controls.OfType<TableLayoutPanel>();
 
-                    foreach (var c in controls) {
-                        ActiveForm.Controls.Remove(c);
+                        foreach (var c in controls) {
+                            ActiveForm.Controls.Remove(c);
+                        }
+                    });
+                } catch (Exception x) { }
+
+                var numOfPlayers = game.players.Length;
+                //numOfPlayers = 3;
+                if (numOfPlayers < 5) {
+                    TableLayoutPanel playerTable = new TableLayoutPanel();
+                    playerTable.Height = 125;
+                    playerTable.Dock = DockStyle.Top;
+                    playerTable.BackColor = Color.Transparent;
+
+                    playerTable.RowCount = 1;
+                    playerTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100f));
+                    playerTable.ColumnCount = numOfPlayers;
+                    for (var i = 0; i < numOfPlayers; i++) {
+                        playerTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / (numOfPlayers)));
                     }
-                });
-            } catch (Exception x) {}
 
-            var numOfPlayers = game.players.Length;
-            //numOfPlayers = 3;
-            if (numOfPlayers < 5) {
-                TableLayoutPanel playerTable = new TableLayoutPanel();
-                playerTable.Height = 125;
-                playerTable.Dock = DockStyle.Top;
-                playerTable.BackColor = Color.Transparent;
+                    for (var i = 0; i < numOfPlayers; i++) {
+                        Label test = new Label();
+                        test.Text = "Test " + i;
+                        playerTable.Controls.Add(test);
+                        test.Dock = DockStyle.Fill;
+                        test.TextAlign = ContentAlignment.MiddleCenter;
+                    }
+                    ActiveForm.Invoke((Action)delegate {
+                        ActiveForm.Controls.Add(playerTable);
+                    });
+                } else {
+                    TableLayoutPanel playerTable1 = new TableLayoutPanel();
+                    playerTable1.Height = 125;
+                    playerTable1.Dock = DockStyle.Top;
 
-                playerTable.RowCount = 1;
-                playerTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100f));
-                playerTable.ColumnCount = numOfPlayers;
-                for (var i = 0; i < numOfPlayers; i++) {
-                    playerTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / (numOfPlayers)));
+                    playerTable1.BackColor = Color.Transparent;
+
+                    playerTable1.RowCount = 1;
+                    playerTable1.RowStyles.Add(new RowStyle(SizeType.Percent, 100f));
+                    playerTable1.ColumnCount = 4;
+                    for (var i = 0; i < 4; i++) {
+                        playerTable1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25f));
+                    }
+
+                    TableLayoutPanel playerTable2 = new TableLayoutPanel();
+                    playerTable2.Height = 125;
+                    playerTable2.Dock = DockStyle.Top;
+
+                    playerTable2.BackColor = Color.Transparent;
+
+                    playerTable2.RowCount = 1;
+                    playerTable2.RowStyles.Add(new RowStyle(SizeType.Percent, 100f));
+                    playerTable2.ColumnCount = numOfPlayers - 4;
+                    for (var i = 0; i < numOfPlayers - 4; i++) {
+                        playerTable2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / (numOfPlayers - 4)));
+                    }
+
+                    for (var i = 0; i < numOfPlayers; i++) {
+                        if (i < 4) {
+                            Label test = new Label();
+                            test.Text = "Test " + i;
+                            playerTable1.Controls.Add(test);
+                            test.Dock = DockStyle.Fill;
+                            test.TextAlign = ContentAlignment.MiddleCenter;
+                        } else {
+                            Label test = new Label();
+                            test.Text = "Test " + i;
+                            playerTable2.Controls.Add(test);
+                            test.Dock = DockStyle.Fill;
+                            test.TextAlign = ContentAlignment.MiddleCenter;
+                        }
+                    }
+
+                    ActiveForm.Invoke((Action)delegate {
+                        ActiveForm.Controls.Add(playerTable2);
+                        ActiveForm.Controls.Add(playerTable1);
+                    });
                 }
-
-                for (var i = 0; i < numOfPlayers; i++) {
-                    Label test = new Label();
-                    test.Text = "Test " + i;
-                    playerTable.Controls.Add(test);
-                    test.Dock = DockStyle.Fill;
-                    test.TextAlign = ContentAlignment.MiddleCenter;
-                }
-                ActiveForm.Invoke((Action)delegate {
-                    ActiveForm.Controls.Add(playerTable);
-                });
             } else {
-                TableLayoutPanel playerTable1 = new TableLayoutPanel();
-                playerTable1.Height = 125;
-                playerTable1.Dock = DockStyle.Top;
-
-                playerTable1.BackColor = Color.Transparent;
-
-                playerTable1.RowCount = 1;
-                playerTable1.RowStyles.Add(new RowStyle(SizeType.Percent, 100f));
-                playerTable1.ColumnCount = 4;
-                for (var i = 0; i < 4; i++) {
-                    playerTable1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25f));
-                }
-
-                TableLayoutPanel playerTable2 = new TableLayoutPanel();
-                playerTable2.Height = 125;
-                playerTable2.Dock = DockStyle.Top;
-
-                playerTable2.BackColor = Color.Transparent;
-
-                playerTable2.RowCount = 1;
-                playerTable2.RowStyles.Add(new RowStyle(SizeType.Percent, 100f));
-                playerTable2.ColumnCount = numOfPlayers - 4;
-                for (var i = 0; i < numOfPlayers - 4; i++) {
-                    playerTable2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / (numOfPlayers - 4)));
-                }
-
-                for (var i = 0; i < numOfPlayers; i++) {
-                    if (i < 4) {
-                        Label test = new Label();
-                        test.Text = "Test " + i;
-                        playerTable1.Controls.Add(test);
-                        test.Dock = DockStyle.Fill;
-                        test.TextAlign = ContentAlignment.MiddleCenter;
-                    } else {
-                        Label test = new Label();
-                        test.Text = "Test " + i;
-                        playerTable2.Controls.Add(test);
-                        test.Dock = DockStyle.Fill;
-                        test.TextAlign = ContentAlignment.MiddleCenter;
-                    }
-                }
-
-                ActiveForm.Invoke((Action)delegate {
-                    ActiveForm.Controls.Add(playerTable2);
-                    ActiveForm.Controls.Add(playerTable1);
-                });
+                //just update data here
             }
         }
 

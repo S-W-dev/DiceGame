@@ -56,7 +56,7 @@ namespace DiceGame {
             UpdatePlayerDisplay();
         }
 
-        private void UpdatePlayerDisplay() {
+        public static void UpdatePlayerDisplay() {
             var numOfPlayers = game.players.Length;
             //numOfPlayers = 3;
             if (numOfPlayers < 5) {
@@ -80,8 +80,9 @@ namespace DiceGame {
                     test.Dock = DockStyle.Fill;
                     test.TextAlign = ContentAlignment.MiddleCenter;
                 }
-
-                Controls.Add(playerTable);
+                ActiveForm.Invoke((Action)delegate {
+                    ActiveForm.Controls.Add(playerTable);
+                });
             } else {
                 TableLayoutPanel playerTable1 = new TableLayoutPanel();
                 playerTable1.Height = 125;
@@ -125,8 +126,10 @@ namespace DiceGame {
                     }
                 }
 
-                Controls.Add(playerTable2);
-                Controls.Add(playerTable1);
+                ActiveForm.Invoke((Action)delegate {
+                    ActiveForm.Controls.Add(playerTable2);
+                    ActiveForm.Controls.Add(playerTable1);
+                });
             }
         }
 
@@ -159,6 +162,8 @@ namespace DiceGame {
                         //game update
                         //var game = message;
                         GameMain.game = message;
+
+                        GameMain.UpdatePlayerDisplay();
 
                         //Console.WriteLine("Roll: " + GameMain.game.roll);
                         //Console.WriteLine(GameMain.game.players[0].status);

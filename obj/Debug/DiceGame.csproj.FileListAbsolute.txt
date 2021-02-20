@@ -39,7 +39,7 @@ C:\Users\23smithspe\Desktop\C#\MyStuff\Repos\obj\Debug\DiceGame.pdb
 C:\Users\23smithspe\Desktop\C#\MyStuff\Repos\obj\Debug\DiceGame.Form1.resources
 C:\Users\14356\Desktop\Coding\DiceGame\DiceGame\DiceGame\bin\Debug\Newtonsoft.Json.dll
 C:\Users\14356\Desktop\Coding\DiceGame\DiceGame\DiceGame\bin\Debug\Newtonsoft.Json.xml
+C:\Users\14356\Desktop\Coding\DiceGame\DiceGame\DiceGame\obj\Debug\DiceGame.Form1.resources
 D:\Repos\DiceGame\bin\Debug\Newtonsoft.Json.dll
 D:\Repos\DiceGame\bin\Debug\Newtonsoft.Json.xml
 D:\Repos\DiceGame\obj\Debug\DiceGame.GameMain.resources
-C:\Users\14356\Desktop\Coding\DiceGame\DiceGame\DiceGame\obj\Debug\DiceGame.GameMain.resources

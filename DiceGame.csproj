@@ -93,5 +93,23 @@
   <ItemGroup>
     <None Include="Resources\game_table.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="dice_five.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dice_four.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dice_one.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dice_six.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dice_three.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dice_two.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

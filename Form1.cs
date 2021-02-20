@@ -17,6 +17,9 @@ namespace DiceGame {
         public static bool connected = false;
         public static Player player;
         public static UpdateMessage game;
+
+        int currentBet = 100, currentChoice = 0;
+
         Thread conn;
         public GameMain() {
             InitializeComponent();
@@ -26,12 +29,12 @@ namespace DiceGame {
             WindowState = FormWindowState.Maximized;
             MaximizeBox = false;
 
-            conn = new Thread(ServerComponents.connection);
+            conn = new Thread(new ServerComponents(this).connection);
             conn.Start();
             while(!connected) {
                 Thread.Sleep(1);
             }
-            ServerComponents.SendMessage(server, "Hello");
+            //ServerComponents.SendMessage(server, "Hello");
         }
 
         protected override void WndProc(ref Message message) {
@@ -138,51 +141,121 @@ namespace DiceGame {
             conn.Abort();
             Application.Exit();
         }
-    }
 
-    class ServerComponents {
-        public static void connection() {
-            using (var ws = new WebSocket("ws://concretegames.net:667/socket/?EIO=2&transport=websocket")) {
-                GameMain.server = ws;
-                Console.WriteLine(ws);
-                ws.OnMessage += (sender, e) => {
-                    //Console.WriteLine("Message: " + e.Data);
-                    try {
-                        UpdateMessage message = JsonConvert.DeserializeObject<UpdateMessage>(e.Data);
+        private void button8_Click(object sender, EventArgs e) {
+            currentBet -= 100;
+            bet.Text = "$" + currentBet.ToString();
+        }
 
-                        //player update
-                        //var player = message.player;
-                        GameMain.player = message.player;
+        private void button1_Click(object sender, EventArgs e) {
+            currentChoice = 1;
+        }
 
-                        //Console.WriteLine(GameMain.player.id);
-                        //Console.WriteLine(GameMain.player.name);
-                        //Console.WriteLine(GameMain.player.status);
-                        //Console.WriteLine(GameMain.player.money);
+        private void button2_Click(object sender, EventArgs e) {
+            currentChoice = 2;
+        }
 
-                        //game update
-                        //var game = message;
-                        GameMain.game = message;
+        private void button3_Click(object sender, EventArgs e) {
+            currentChoice = 3;
+        }
 
-                        //Console.WriteLine("Roll: " + GameMain.game.roll);
-                        //Console.WriteLine(GameMain.game.players[0].status);
+        private void button4_Click(object sender, EventArgs e) {
+            currentChoice = 4;
+        }
 
-                    } catch (Exception x) {
-                        if (e.Data == "connected") SendMessage(ws, "connected");
-                        else Console.WriteLine(x);
-                    }
-                };
-                ws.OnError += (sender, e) =>
-                    Console.WriteLine("Error: " + e.Message);
-                ws.OnOpen += (sender, e) =>
-                    GameMain.connected = true;
-                ws.Connect();
-                Console.ReadKey(true);
+        private void button5_Click(object sender, EventArgs e) {
+            currentChoice = 5;
+        }
+
+        private void button6_Click(object sender, EventArgs e) {
+            currentChoice = 6;
+        }
+
+        private void submit_Click(object sender, EventArgs e) {
+            ServerComponents.SendMessage(server, JsonConvert.SerializeObject(ClientMessage.GenerateClientMessage(ClientMessage.bet, currentChoice, currentBet)));
+        }
+
+        private void plus_Click(object sender, EventArgs e) {
+            currentBet += 100;
+            bet.Text = "$" + currentBet.ToString();
+        }
+
+        class ServerComponents {
+            private GameMain gamemain;
+            public ServerComponents(GameMain _gamemain) {
+                gamemain = _gamemain;
+            }
+            public void connection() {
+                using (var ws = new WebSocket("ws://concretegames.net:667/socket/?EIO=2&transport=websocket")) {
+                    GameMain.server = ws;
+                    Console.WriteLine(ws);
+                    ws.OnMessage += (sender, e) => {
+                        //Console.WriteLine("Message: " + e.Data);
+                        try {
+                            UpdateMessage message = JsonConvert.DeserializeObject<UpdateMessage>(e.Data);
+
+                            //player update
+                            //var player = message.player;
+                            player = message.player;
+
+                            //Console.WriteLine(GameMain.player.id);
+                            //Console.WriteLine(GameMain.player.name);
+                            //Console.WriteLine(GameMain.player.status);
+                            //Console.WriteLine(GameMain.player.money);
+
+                            //game update
+                            //var game = message;
+                            game = message;
+
+                            gamemain.Invoke((Action)delegate {
+                                gamemain.money.Text = "You have: $" + player.money;
+                            });
+
+                            Console.WriteLine("Roll: " + game.roll);
+                            //Console.WriteLine(GameMain.game.players[0].status);
+
+                        } catch (Exception x) {
+                            if (e.Data == "connected") SendMessage(ws, "connected");
+                            else Console.WriteLine(x);
+                        }
+                    };
+                    ws.OnError += (sender, e) =>
+                        Console.WriteLine("Error: " + e.Message);
+                    ws.OnOpen += (sender, e) =>
+                        connected = true;
+                    ws.Connect();
+                    Console.ReadKey(true);
+                }
+            }
+
+            public static void SendMessage(WebSocket ws, string message) {
+                //ws.Send(JsonConvert.SerializeObject(new { type = "getframe" }));
+                ws.Send(message);
             }
         }
 
-        public static void SendMessage(WebSocket ws, string message) {
-            //ws.Send(JsonConvert.SerializeObject(new { type = "getframe" }));
-            ws.Send(message);
+    }
+
+    class ClientMessage {
+        public static string bet = "bet";
+
+        public static ClientMessageObject GenerateClientMessage(string type, int choice, int bet) {
+            switch (type) {
+                case "bet":
+                    ClientMessageObject obj = new ClientMessageObject();
+                    obj.type = type;
+                    obj.choice = choice;
+                    obj.bet = bet >= 100 ? bet : 100;
+                    return obj;
+                default:
+                    return null;
+            }
+        }
+
+        public class ClientMessageObject {
+            public string type;
+            public int choice;
+            public int bet;
         }
     }
 

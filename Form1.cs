@@ -57,23 +57,13 @@ namespace DiceGame {
         }
 
         public static void UpdatePlayerDisplay() {
-
-            try {
-                ActiveForm.Invoke((Action)delegate {
-                    var controls = ActiveForm.Controls.OfType<TableLayoutPanel>();
-
-                    foreach (var c in controls) {
-                        ActiveForm.Controls.Remove(c);
-                    }
-                });
-            } catch (Exception x) {}
-
             var numOfPlayers = game.players.Length;
             //numOfPlayers = 3;
             if (numOfPlayers < 5) {
                 TableLayoutPanel playerTable = new TableLayoutPanel();
                 playerTable.Height = 125;
                 playerTable.Dock = DockStyle.Top;
+
                 playerTable.BackColor = Color.Transparent;
 
                 playerTable.RowCount = 1;

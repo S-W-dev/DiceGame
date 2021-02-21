@@ -114,5 +114,20 @@
   <ItemGroup>
     <None Include="table.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CGLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CGLogo1 %28Custom%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CGLogo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CGLogo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CGLogo3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

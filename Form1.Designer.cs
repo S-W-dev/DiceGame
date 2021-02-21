@@ -32,25 +32,62 @@
             this.bet = new System.Windows.Forms.Label();
             this.money = new System.Windows.Forms.Label();
             this.Table = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tableTable = new System.Windows.Forms.TableLayoutPanel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.roll = new System.Windows.Forms.PictureBox();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.timeout = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.choice = new System.Windows.Forms.PictureBox();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.betval = new System.Windows.Forms.Label();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.status = new System.Windows.Forms.Label();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.name = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.choice3 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.choice4 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.choice1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.choice2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.choice6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.choice5 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tableTable.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.roll)).BeginInit();
+            this.panel16.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.choice)).BeginInit();
+            this.panel14.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -60,6 +97,8 @@
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.panel17.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
             // button5
@@ -67,28 +106,26 @@
             this.button5.BackColor = System.Drawing.Color.White;
             this.button5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Image = global::DiceGame.Properties.Resources.dice_four;
-            this.button5.Location = new System.Drawing.Point(0, 43);
-            this.button5.Margin = new System.Windows.Forms.Padding(4);
+            this.button5.Image = global::DiceGame.Properties.Resources.dice_five;
+            this.button5.Location = new System.Drawing.Point(0, 35);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(220, 185);
+            this.button5.Size = new System.Drawing.Size(166, 150);
             this.button5.TabIndex = 3;
             this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button4_Click);
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.White;
             this.button6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Image = global::DiceGame.Properties.Resources.dice_five;
-            this.button6.Location = new System.Drawing.Point(0, 43);
-            this.button6.Margin = new System.Windows.Forms.Padding(4);
+            this.button6.Image = global::DiceGame.Properties.Resources.dice_six;
+            this.button6.Location = new System.Drawing.Point(0, 35);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(220, 185);
+            this.button6.Size = new System.Drawing.Size(166, 150);
             this.button6.TabIndex = 4;
             this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button5_Click);
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // submit
             // 
@@ -97,10 +134,9 @@
             this.submit.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.submit.Location = new System.Drawing.Point(0, 177);
-            this.submit.Margin = new System.Windows.Forms.Padding(4);
+            this.submit.Location = new System.Drawing.Point(0, 144);
             this.submit.Name = "submit";
-            this.submit.Size = new System.Drawing.Size(226, 51);
+            this.submit.Size = new System.Drawing.Size(167, 41);
             this.submit.TabIndex = 6;
             this.submit.Text = "Submit";
             this.submit.UseVisualStyleBackColor = false;
@@ -112,10 +148,9 @@
             this.minus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.minus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.minus.Location = new System.Drawing.Point(4, 4);
-            this.minus.Margin = new System.Windows.Forms.Padding(4);
+            this.minus.Location = new System.Drawing.Point(3, 3);
             this.minus.Name = "minus";
-            this.minus.Size = new System.Drawing.Size(105, 37);
+            this.minus.Size = new System.Drawing.Size(77, 31);
             this.minus.TabIndex = 7;
             this.minus.Text = "-";
             this.minus.UseVisualStyleBackColor = false;
@@ -127,10 +162,9 @@
             this.plus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.plus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.plus.Location = new System.Drawing.Point(117, 4);
-            this.plus.Margin = new System.Windows.Forms.Padding(4);
+            this.plus.Location = new System.Drawing.Point(86, 3);
             this.plus.Name = "plus";
-            this.plus.Size = new System.Drawing.Size(105, 37);
+            this.plus.Size = new System.Drawing.Size(78, 31);
             this.plus.TabIndex = 8;
             this.plus.Text = "+";
             this.plus.UseVisualStyleBackColor = false;
@@ -143,10 +177,9 @@
             this.label2.Font = new System.Drawing.Font("Arial", 20F);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label2.Size = new System.Drawing.Size(226, 39);
+            this.label2.Size = new System.Drawing.Size(167, 32);
             this.label2.TabIndex = 10;
             this.label2.Text = "Bet";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -157,11 +190,10 @@
             this.bet.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bet.Font = new System.Drawing.Font("Arial", 25F);
             this.bet.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.bet.Location = new System.Drawing.Point(0, 86);
-            this.bet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.bet.Location = new System.Drawing.Point(0, 70);
             this.bet.Name = "bet";
             this.bet.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bet.Size = new System.Drawing.Size(226, 46);
+            this.bet.Size = new System.Drawing.Size(167, 37);
             this.bet.TabIndex = 11;
             this.bet.Text = "$100";
             this.bet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -172,11 +204,10 @@
             this.money.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.money.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.money.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.money.Location = new System.Drawing.Point(0, 43);
-            this.money.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.money.Location = new System.Drawing.Point(0, 35);
             this.money.Name = "money";
             this.money.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.money.Size = new System.Drawing.Size(226, 43);
+            this.money.Size = new System.Drawing.Size(167, 35);
             this.money.TabIndex = 12;
             this.money.Text = "You have: $999,999";
             this.money.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -185,37 +216,242 @@
             // 
             this.Table.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Table.Image = global::DiceGame.Properties.Resources.table;
-            this.Table.Location = new System.Drawing.Point(397, 223);
+            this.Table.Location = new System.Drawing.Point(297, 181);
+            this.Table.Margin = new System.Windows.Forms.Padding(2);
             this.Table.Name = "Table";
-            this.Table.Size = new System.Drawing.Size(794, 394);
+            this.Table.Size = new System.Drawing.Size(596, 321);
             this.Table.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Table.TabIndex = 13;
             this.Table.TabStop = false;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(754, 73);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(8, 8);
-            this.pictureBox2.TabIndex = 14;
-            this.pictureBox2.TabStop = false;
-            // 
             // tableTable
             // 
+            this.tableTable.BackColor = System.Drawing.Color.Transparent;
             this.tableTable.ColumnCount = 3;
             this.tableTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 800F));
+            this.tableTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 600F));
             this.tableTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableTable.Controls.Add(this.Table, 1, 1);
+            this.tableTable.Controls.Add(this.panel8, 0, 1);
+            this.tableTable.Controls.Add(this.panel11, 2, 1);
+            this.tableTable.Controls.Add(this.label1, 1, 0);
+            this.tableTable.Controls.Add(this.pictureBox1, 2, 0);
+            this.tableTable.Controls.Add(this.panel17, 0, 0);
             this.tableTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableTable.Location = new System.Drawing.Point(0, 0);
+            this.tableTable.Margin = new System.Windows.Forms.Padding(2);
             this.tableTable.Name = "tableTable";
             this.tableTable.RowCount = 3;
             this.tableTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.tableTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 325F));
             this.tableTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableTable.Size = new System.Drawing.Size(1588, 841);
+            this.tableTable.Size = new System.Drawing.Size(1191, 683);
             this.tableTable.TabIndex = 15;
+            this.tableTable.Paint += new System.Windows.Forms.PaintEventHandler(this.tableTable_Paint);
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.panel9);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(3, 182);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(289, 319);
+            this.panel8.TabIndex = 14;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.roll);
+            this.panel9.Controls.Add(this.panel16);
+            this.panel9.Controls.Add(this.panel10);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(289, 319);
+            this.panel9.TabIndex = 0;
+            // 
+            // roll
+            // 
+            this.roll.BackColor = System.Drawing.Color.Transparent;
+            this.roll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.roll.Image = global::DiceGame.Properties.Resources.dice_four;
+            this.roll.Location = new System.Drawing.Point(0, 180);
+            this.roll.Name = "roll";
+            this.roll.Size = new System.Drawing.Size(289, 139);
+            this.roll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.roll.TabIndex = 5;
+            this.roll.TabStop = false;
+            // 
+            // panel16
+            // 
+            this.panel16.Controls.Add(this.label3);
+            this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel16.Location = new System.Drawing.Point(0, 60);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(289, 120);
+            this.panel16.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.Font = new System.Drawing.Font("Arial", 20F);
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label3.Size = new System.Drawing.Size(289, 60);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Last Roll:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.timeout);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(289, 60);
+            this.panel10.TabIndex = 0;
+            // 
+            // timeout
+            // 
+            this.timeout.BackColor = System.Drawing.Color.Transparent;
+            this.timeout.Dock = System.Windows.Forms.DockStyle.Top;
+            this.timeout.Font = new System.Drawing.Font("Arial", 15F);
+            this.timeout.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.timeout.Location = new System.Drawing.Point(0, 0);
+            this.timeout.Name = "timeout";
+            this.timeout.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.timeout.Size = new System.Drawing.Size(289, 60);
+            this.timeout.TabIndex = 11;
+            this.timeout.Text = "30 seconds left";
+            this.timeout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.panel15);
+            this.panel11.Controls.Add(this.panel14);
+            this.panel11.Controls.Add(this.panel13);
+            this.panel11.Controls.Add(this.panel12);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(898, 182);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(290, 319);
+            this.panel11.TabIndex = 15;
+            // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.choice);
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel15.Location = new System.Drawing.Point(0, 180);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(290, 139);
+            this.panel15.TabIndex = 4;
+            // 
+            // choice
+            // 
+            this.choice.BackColor = System.Drawing.Color.Transparent;
+            this.choice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.choice.Image = global::DiceGame.Properties.Resources.dice_four;
+            this.choice.Location = new System.Drawing.Point(0, 0);
+            this.choice.Name = "choice";
+            this.choice.Size = new System.Drawing.Size(290, 139);
+            this.choice.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.choice.TabIndex = 4;
+            this.choice.TabStop = false;
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.betval);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel14.Location = new System.Drawing.Point(0, 120);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(290, 60);
+            this.panel14.TabIndex = 3;
+            // 
+            // betval
+            // 
+            this.betval.BackColor = System.Drawing.Color.Transparent;
+            this.betval.Dock = System.Windows.Forms.DockStyle.Top;
+            this.betval.Font = new System.Drawing.Font("Arial", 15F);
+            this.betval.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.betval.Location = new System.Drawing.Point(0, 0);
+            this.betval.Name = "betval";
+            this.betval.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.betval.Size = new System.Drawing.Size(290, 60);
+            this.betval.TabIndex = 11;
+            this.betval.Text = "Bet $900 on:";
+            this.betval.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.status);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel13.Location = new System.Drawing.Point(0, 60);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(290, 60);
+            this.panel13.TabIndex = 2;
+            // 
+            // status
+            // 
+            this.status.BackColor = System.Drawing.Color.Transparent;
+            this.status.Dock = System.Windows.Forms.DockStyle.Top;
+            this.status.Font = new System.Drawing.Font("Arial", 15F);
+            this.status.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.status.Location = new System.Drawing.Point(0, 0);
+            this.status.Name = "status";
+            this.status.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.status.Size = new System.Drawing.Size(290, 60);
+            this.status.TabIndex = 11;
+            this.status.Text = "Status: Win!";
+            this.status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.name);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel12.Location = new System.Drawing.Point(0, 0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(290, 60);
+            this.panel12.TabIndex = 1;
+            // 
+            // name
+            // 
+            this.name.BackColor = System.Drawing.Color.Transparent;
+            this.name.Dock = System.Windows.Forms.DockStyle.Top;
+            this.name.Font = new System.Drawing.Font("Arial", 15F);
+            this.name.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.name.Location = new System.Drawing.Point(0, 0);
+            this.name.Name = "name";
+            this.name.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.name.Size = new System.Drawing.Size(290, 62);
+            this.name.TabIndex = 11;
+            this.name.Text = "Name: Bob";
+            this.name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Unispace", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(298, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(594, 179);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "HighRollers";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::DiceGame.Properties.Resources.CGLogo3;
+            this.pictureBox1.Location = new System.Drawing.Point(898, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(290, 173);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
             // 
             // tableLayoutPanel1
             // 
@@ -237,43 +473,76 @@
             this.tableLayoutPanel1.Controls.Add(this.panel2, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel7, 6, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 607);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 494);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1588, 234);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1191, 189);
             this.tableLayoutPanel1.TabIndex = 16;
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.choice3);
             this.panel6.Controls.Add(this.button3);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(455, 3);
+            this.panel6.Location = new System.Drawing.Point(342, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(220, 228);
+            this.panel6.Size = new System.Drawing.Size(166, 185);
             this.panel6.TabIndex = 16;
+            // 
+            // choice3
+            // 
+            this.choice3.BackColor = System.Drawing.Color.Transparent;
+            this.choice3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.choice3.Font = new System.Drawing.Font("Arial", 20F);
+            this.choice3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.choice3.Location = new System.Drawing.Point(0, 0);
+            this.choice3.Name = "choice3";
+            this.choice3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.choice3.Size = new System.Drawing.Size(166, 32);
+            this.choice3.TabIndex = 11;
+            this.choice3.Text = "Choice";
+            this.choice3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.White;
             this.button3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Image = global::DiceGame.Properties.Resources.dice_four;
-            this.button3.Location = new System.Drawing.Point(0, 43);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Image = global::DiceGame.Properties.Resources.dice_three;
+            this.button3.Location = new System.Drawing.Point(0, 35);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(220, 185);
+            this.button3.Size = new System.Drawing.Size(166, 150);
             this.button3.TabIndex = 3;
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.choice4);
             this.panel5.Controls.Add(this.button4);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(681, 3);
+            this.panel5.Location = new System.Drawing.Point(512, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(220, 228);
+            this.panel5.Size = new System.Drawing.Size(166, 185);
             this.panel5.TabIndex = 15;
+            // 
+            // choice4
+            // 
+            this.choice4.BackColor = System.Drawing.Color.Transparent;
+            this.choice4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.choice4.Font = new System.Drawing.Font("Arial", 20F);
+            this.choice4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.choice4.Location = new System.Drawing.Point(0, 0);
+            this.choice4.Name = "choice4";
+            this.choice4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.choice4.Size = new System.Drawing.Size(166, 32);
+            this.choice4.TabIndex = 11;
+            this.choice4.Text = "Choice";
+            this.choice4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button4
             // 
@@ -281,90 +550,138 @@
             this.button4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Image = global::DiceGame.Properties.Resources.dice_four;
-            this.button4.Location = new System.Drawing.Point(0, 43);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
+            this.button4.Location = new System.Drawing.Point(0, 35);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(220, 185);
+            this.button4.Size = new System.Drawing.Size(166, 150);
             this.button4.TabIndex = 3;
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.choice1);
             this.panel4.Controls.Add(this.button1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Location = new System.Drawing.Point(2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(220, 228);
+            this.panel4.Size = new System.Drawing.Size(166, 185);
             this.panel4.TabIndex = 14;
+            // 
+            // choice1
+            // 
+            this.choice1.BackColor = System.Drawing.Color.Transparent;
+            this.choice1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.choice1.Font = new System.Drawing.Font("Arial", 20F);
+            this.choice1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.choice1.Location = new System.Drawing.Point(0, 0);
+            this.choice1.Name = "choice1";
+            this.choice1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.choice1.Size = new System.Drawing.Size(166, 32);
+            this.choice1.TabIndex = 11;
+            this.choice1.Text = "Choice";
+            this.choice1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::DiceGame.Properties.Resources.dice_four;
-            this.button1.Location = new System.Drawing.Point(0, 43);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Image = global::DiceGame.Properties.Resources.dice_one;
+            this.button1.Location = new System.Drawing.Point(0, 35);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(220, 185);
+            this.button1.Size = new System.Drawing.Size(166, 150);
             this.button1.TabIndex = 3;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.choice2);
             this.panel3.Controls.Add(this.button2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(229, 3);
+            this.panel3.Location = new System.Drawing.Point(172, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(220, 228);
+            this.panel3.Size = new System.Drawing.Size(166, 185);
             this.panel3.TabIndex = 13;
+            // 
+            // choice2
+            // 
+            this.choice2.BackColor = System.Drawing.Color.Transparent;
+            this.choice2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.choice2.Font = new System.Drawing.Font("Arial", 20F);
+            this.choice2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.choice2.Location = new System.Drawing.Point(0, 0);
+            this.choice2.Name = "choice2";
+            this.choice2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.choice2.Size = new System.Drawing.Size(166, 32);
+            this.choice2.TabIndex = 11;
+            this.choice2.Text = "Choice";
+            this.choice2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = global::DiceGame.Properties.Resources.dice_four;
-            this.button2.Location = new System.Drawing.Point(0, 43);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Image = global::DiceGame.Properties.Resources.dice_two;
+            this.button2.Location = new System.Drawing.Point(0, 35);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(220, 185);
+            this.button2.Size = new System.Drawing.Size(166, 150);
             this.button2.TabIndex = 3;
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.choice6);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(1133, 3);
+            this.panel1.Location = new System.Drawing.Point(852, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(220, 228);
+            this.panel1.Size = new System.Drawing.Size(166, 185);
             this.panel1.TabIndex = 11;
             // 
-            // label1
+            // choice6
             // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Arial", 20F);
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(220, 39);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Choice";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.choice6.BackColor = System.Drawing.Color.Transparent;
+            this.choice6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.choice6.Font = new System.Drawing.Font("Arial", 20F);
+            this.choice6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.choice6.Location = new System.Drawing.Point(0, 0);
+            this.choice6.Name = "choice6";
+            this.choice6.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.choice6.Size = new System.Drawing.Size(166, 32);
+            this.choice6.TabIndex = 10;
+            this.choice6.Text = "Choice";
+            this.choice6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.choice5);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(907, 3);
+            this.panel2.Location = new System.Drawing.Point(682, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(220, 228);
+            this.panel2.Size = new System.Drawing.Size(166, 185);
             this.panel2.TabIndex = 12;
+            // 
+            // choice5
+            // 
+            this.choice5.BackColor = System.Drawing.Color.Transparent;
+            this.choice5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.choice5.Font = new System.Drawing.Font("Arial", 20F);
+            this.choice5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.choice5.Location = new System.Drawing.Point(0, 0);
+            this.choice5.Name = "choice5";
+            this.choice5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.choice5.Size = new System.Drawing.Size(166, 32);
+            this.choice5.TabIndex = 11;
+            this.choice5.Text = "Choice";
+            this.choice5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel7
             // 
@@ -374,9 +691,10 @@
             this.panel7.Controls.Add(this.submit);
             this.panel7.Controls.Add(this.label2);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(1359, 3);
+            this.panel7.Location = new System.Drawing.Point(1022, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(226, 228);
+            this.panel7.Size = new System.Drawing.Size(167, 185);
             this.panel7.TabIndex = 17;
             // 
             // tableLayoutPanel2
@@ -387,32 +705,86 @@
             this.tableLayoutPanel2.Controls.Add(this.plus, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.minus, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 132);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 107);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(226, 45);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(167, 37);
             this.tableLayoutPanel2.TabIndex = 9;
+            // 
+            // panel17
+            // 
+            this.panel17.Controls.Add(this.label5);
+            this.panel17.Controls.Add(this.panel18);
+            this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel17.Location = new System.Drawing.Point(3, 3);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(289, 173);
+            this.panel17.TabIndex = 18;
+            // 
+            // panel18
+            // 
+            this.panel18.Controls.Add(this.label4);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel18.Location = new System.Drawing.Point(0, 0);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(289, 43);
+            this.panel18.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(289, 43);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Game Code:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label5
+            // 
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Font = new System.Drawing.Font("Unispace", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(0, 43);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(289, 130);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "si82k";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // GameMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1588, 841);
+            this.ClientSize = new System.Drawing.Size(1191, 683);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.tableTable);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameMain";
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Table)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tableTable.ResumeLayout(false);
+            this.tableTable.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.roll)).EndInit();
+            this.panel16.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel15.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.choice)).EndInit();
+            this.panel14.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -423,6 +795,8 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel17.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,10 +812,9 @@
         private System.Windows.Forms.Label bet;
         public System.Windows.Forms.Label money;
         private System.Windows.Forms.PictureBox Table;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TableLayoutPanel tableTable;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label choice6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
@@ -454,6 +827,33 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label choice3;
+        private System.Windows.Forms.Label choice4;
+        private System.Windows.Forms.Label choice1;
+        private System.Windows.Forms.Label choice2;
+        private System.Windows.Forms.Label choice5;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Label timeout;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Label name;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Label betval;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Label status;
+        private System.Windows.Forms.PictureBox choice;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox roll;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 

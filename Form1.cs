@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using WebSocketSharp;
 using System.Threading;
 using Newtonsoft.Json;
+using DiceGame;
 
 namespace DiceGame {
     public partial class GameMain : Form {
@@ -21,7 +22,7 @@ namespace DiceGame {
         int currentBet = 100, currentChoice = 0;
 
         Thread conn;
-        public GameMain() {
+        public GameMain(bool join) {
             InitializeComponent();
 
             TopMost = true;
@@ -31,10 +32,14 @@ namespace DiceGame {
 
             conn = new Thread(new ServerComponents(this).connection);
             conn.Start();
-            while(!connected) {
+            while (!connected) {
                 Thread.Sleep(1);
             }
-            //ServerComponents.SendMessage(server, "Hello");
+            if (join) {
+                var message = new ClientMessage.JoinMessage();
+                message.room_code = Prompt.ShowDialog("Enter the room code", "Prompt");
+                ServerComponents.SendMessage(server, JsonConvert.SerializeObject(message));
+            }
         }
 
         protected override void WndProc(ref Message message) {
@@ -54,6 +59,8 @@ namespace DiceGame {
 
         private void Form1_Load(object sender, EventArgs e) {
 
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
             while (game == null) {
                 Thread.Sleep(1);
             }
@@ -61,6 +68,10 @@ namespace DiceGame {
 
             tableTable.ColumnStyles[1].Width = 900f / 1588f * tableTable.Width;
             tableTable.RowStyles[1].Height = 600f / 841f * tableTable.Height;
+
+            setChoice(1);
+
+            setName("Walter");
         }
 
         private void UpdatePlayerDisplay() {
@@ -147,46 +158,79 @@ namespace DiceGame {
         }
 
         private void button8_Click(object sender, EventArgs e) {
-            currentBet -= 100;
+            if (currentBet > 100) currentBet -= 100;
             bet.Text = "$" + currentBet.ToString();
         }
 
+        private void setChoice(int choice) {
+            var i = 1;
+            foreach (Label l in new Label[] { choice1, choice2, choice3, choice4, choice5, choice6 }) {
+                Console.WriteLine(l.Name);
+                l.Hide();
+                if (i == choice) l.Show();
+                i++;
+            }
+            currentChoice = choice;
+        }
+
         private void button1_Click(object sender, EventArgs e) {
-            currentChoice = 1;
+            setChoice(1);
         }
 
         private void button2_Click(object sender, EventArgs e) {
-            currentChoice = 2;
+            setChoice(2);
         }
 
         private void button3_Click(object sender, EventArgs e) {
-            currentChoice = 3;
+            setChoice(3);
         }
 
         private void button4_Click(object sender, EventArgs e) {
-            currentChoice = 4;
+            setChoice(4);
         }
 
         private void button5_Click(object sender, EventArgs e) {
-            currentChoice = 5;
+            setChoice(5);
         }
 
         private void button6_Click(object sender, EventArgs e) {
-            currentChoice = 6;
+            setChoice(6);
         }
 
+        int setBet = 0;
+        int setC = 0;
+
         private void submit_Click(object sender, EventArgs e) {
-            ServerComponents.SendMessage(server, JsonConvert.SerializeObject(ClientMessage.GenerateClientMessage(ClientMessage.bet, currentChoice, currentBet)));
+            setBet = currentBet;
+            setC = currentChoice;
+            var message = new ClientMessage.BetMessage();
+            message.bet = setBet >= 100 ? setBet : 100; ;
+            message.choice = setC;
+            ServerComponents.SendMessage(server, JsonConvert.SerializeObject(message));
+        }
+
+        private void setName(string name) {
+            var message = new ClientMessage.NameMessage();
+            message.name = name;
+            ServerComponents.SendMessage(server, JsonConvert.SerializeObject(message));
         }
 
         private void plus_Click(object sender, EventArgs e) {
-            currentBet += 100;
+            if (currentBet < player.money) currentBet += 100;
             bet.Text = "$" + currentBet.ToString();
         }
 
         private void GameMain_SizeChanged(object sender, EventArgs e) {
             tableTable.ColumnStyles[1].Width = 800f / 1588f * tableTable.Width;
             tableTable.RowStyles[1].Height = 400f / 841f * tableTable.Height;
+        }
+
+        private void tableTable_Paint(object sender, PaintEventArgs e) {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e) {
+
         }
 
         class ServerComponents {
@@ -199,30 +243,33 @@ namespace DiceGame {
                     GameMain.server = ws;
                     Console.WriteLine(ws);
                     ws.OnMessage += (sender, e) => {
-                        //Console.WriteLine("Message: " + e.Data);
                         try {
                             UpdateMessage message = JsonConvert.DeserializeObject<UpdateMessage>(e.Data);
 
-                            //player update
-                            //var player = message.player;
                             player = message.player;
-
-                            //Console.WriteLine(GameMain.player.id);
-                            //Console.WriteLine(GameMain.player.name);
-                            //Console.WriteLine(GameMain.player.status);
-                            //Console.WriteLine(GameMain.player.money);
-
-                            //game update
-                            //var game = message;
                             game = message;
 
                             gamemain.Invoke((Action)delegate {
                                 gamemain.money.Text = "You have: $" + player.money;
+
+                                Image[] DiceImages = new Image[] { null, Properties.Resources.dice_one, Properties.Resources.dice_two, Properties.Resources.dice_three, Properties.Resources.dice_four, Properties.Resources.dice_five, Properties.Resources.dice_six };
+
+                                gamemain.roll.Image = DiceImages[game.roll];
+
+                                try {
+                                    ((PictureBox)gamemain.Controls.Find("roll", false)[0]).Image = DiceImages[game.roll];
+                                } catch (Exception x) { }
+
+                                gamemain.name.Text = player.name;
+                                gamemain.status.Text = player.status;
+                                gamemain.betval.Text = "Bet $" + gamemain.setBet + " on:";
+                                gamemain.choice.Image = DiceImages[gamemain.setC];
+
+                                gamemain.timeout.Text = (30 - player.timeout).ToString();
+
+                                if (player.timeouts >= 3) throw new Exception("Player was kicked for 3 timeouts.");
+
                             });
-
-                            Console.WriteLine("Roll: " + game.roll);
-                            //Console.WriteLine(GameMain.game.players[0].status);
-
                         } catch (Exception x) {
                             if (e.Data == "connected") SendMessage(ws, "connected");
                             else Console.WriteLine(x);
@@ -245,26 +292,38 @@ namespace DiceGame {
 
     }
 
-    class ClientMessage {
+    static class ClientMessage {
         public static string bet = "bet";
-
-        public static ClientMessageObject GenerateClientMessage(string type, int choice, int bet) {
-            switch (type) {
-                case "bet":
-                    ClientMessageObject obj = new ClientMessageObject();
-                    obj.type = type;
-                    obj.choice = choice;
-                    obj.bet = bet >= 100 ? bet : 100;
-                    return obj;
-                default:
-                    return null;
-            }
-        }
+        public static string name = "name";
+        public static string join = "join";
 
         public class ClientMessageObject {
             public string type;
+        }
+
+        public class BetMessage : ClientMessageObject {
             public int choice;
             public int bet;
+
+            public BetMessage() {
+                type = ClientMessage.bet;
+            }
+        }
+
+        public class NameMessage : ClientMessageObject {
+            public string name;
+
+            public NameMessage() {
+                type = ClientMessage.name;
+            }
+        }
+
+        public class JoinMessage : ClientMessageObject {
+            public string room_code;
+
+            public JoinMessage() {
+                type = ClientMessage.join;
+            }
         }
     }
 
@@ -281,5 +340,9 @@ namespace DiceGame {
         public string status;
         public int id;
         public int money;
+        public bool hasBet;
+        public int timeout;
+        public int timeouts;
     }
 }
+

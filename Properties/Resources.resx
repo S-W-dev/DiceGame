@@ -127,8 +127,8 @@
   <data name="dice_five" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\dice_five.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dice_two" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\dice_two.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\table.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dice_six" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\dice_six.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,10 +136,25 @@
   <data name="dice_four" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\dice_four.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="dice_two" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\dice_two.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="game_table" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\game_table.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\table.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CGLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CGLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CGLogo1 (Custom)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CGLogo1 (Custom).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CGLogo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CGLogo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CGLogo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CGLogo2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CGLogo3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CGLogo3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

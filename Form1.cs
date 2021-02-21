@@ -59,8 +59,8 @@ namespace DiceGame {
             }
             //UpdatePlayerDisplay();
 
-            tableTable.ColumnStyles[1].Width = 800f / 1588f * tableTable.Width;
-            tableTable.RowStyles[1].Height = 400f / 841f * tableTable.Height;
+            tableTable.ColumnStyles[1].Width = 900f / 1588f * tableTable.Width;
+            tableTable.RowStyles[1].Height = 600f / 841f * tableTable.Height;
         }
 
         private void UpdatePlayerDisplay() {

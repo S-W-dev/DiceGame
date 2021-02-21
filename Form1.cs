@@ -53,10 +53,14 @@ namespace DiceGame {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+
             while (game == null) {
                 Thread.Sleep(1);
             }
-            UpdatePlayerDisplay();
+            //UpdatePlayerDisplay();
+
+            tableTable.ColumnStyles[1].Width = 800f / 1588f * tableTable.Width;
+            tableTable.RowStyles[1].Height = 400f / 841f * tableTable.Height;
         }
 
         private void UpdatePlayerDisplay() {
@@ -178,6 +182,11 @@ namespace DiceGame {
         private void plus_Click(object sender, EventArgs e) {
             currentBet += 100;
             bet.Text = "$" + currentBet.ToString();
+        }
+
+        private void GameMain_SizeChanged(object sender, EventArgs e) {
+            tableTable.ColumnStyles[1].Width = 800f / 1588f * tableTable.Width;
+            tableTable.RowStyles[1].Height = 400f / 841f * tableTable.Height;
         }
 
         class ServerComponents {

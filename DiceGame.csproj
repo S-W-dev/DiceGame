@@ -111,5 +111,8 @@
   <ItemGroup>
     <None Include="dice_two.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="table.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -40,8 +40,8 @@ namespace DiceGame {
             Alert.ShowDialog("Sign Up not allowed for school version of game.", "School Policy");
         }
 
-        private void button3_Click_1(object sender, EventArgs e) {
-            LoginData data = Login.ShowDialog("Login to your ConcreteGames account below.", "Login to your ConcreteGames Account");
+        private async void button3_Click_1(object sender, EventArgs e) {
+            LoginData data = await Login.ShowDialog("Login to your ConcreteGames account below.", "Login to your ConcreteGames Account");
             Console.WriteLine(data.money);
             Console.WriteLine(data.username);
         }

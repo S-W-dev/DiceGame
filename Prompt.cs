@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace DiceGame {
 
     public static class Login {
-        public static LoginData ShowDialog(string text, string caption) {
+        public static async Task<LoginData> ShowDialog(string text, string caption) {
             bool loginSuccess = false;
             Form login = new Form() {
                 Width = 500,
@@ -31,7 +31,9 @@ namespace DiceGame {
             LoginData data = new LoginData();
 
             if (login.ShowDialog() == DialogResult.OK) {
-                return new DatabaseConn(username.Text, password.Text).Download();
+                var x = new DatabaseConn(username.Text, password.Text);
+                var y = await x.Download();
+                return y;
             } else {
                 return data;
             }

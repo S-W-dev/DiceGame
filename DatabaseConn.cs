@@ -77,10 +77,11 @@ namespace DiceGame {
             }
         }
 
-        public LoginData Download() {
+        public async Task<LoginData> Download() {
             LoginData data = new LoginData();
             data.username = uname;
-            data.money = Data("download", upass).money;
+            var getData = await Data("download", upass);
+            data.money = getData.money;
             return data;
         }
 
@@ -90,7 +91,7 @@ namespace DiceGame {
             Data("upload", upass, JsonConvert.SerializeObject(myData));
         }
 
-        public data Data(string operation, string login_string, string data = "null", string server = "https://concretegames.net", string link = "/games/upload_scores.php?", string return_value = "highrollers") {
+        public async Task<data> Data(string operation, string login_string, string data = "null", string server = "https://concretegames.net", string link = "/games/upload_scores.php?", string return_value = "highrollers") {
             var req = server + link + "username=" + uname + "&login_string=" + login_string + "&operation=" + operation + "&data=" + data + "&return=" + return_value;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(req);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -111,10 +112,8 @@ namespace DiceGame {
                 return new data();
 
             } else {
-
                 Console.WriteLine(output);
                 return JsonConvert.DeserializeObject<data>(output);
-
             }
 
         }

@@ -13,7 +13,7 @@ namespace DiceGame {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GameMain());
+            Application.Run(new Start());
         }
     }
 }

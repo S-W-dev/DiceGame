@@ -38,7 +38,9 @@ namespace DiceGame {
             if (join) {
                 var message = new ClientMessage.JoinMessage();
                 message.room_code = Prompt.ShowDialog("Enter the room code", "Prompt");
-                ServerComponents.SendMessage(server, JsonConvert.SerializeObject(message));
+                var message1 = JsonConvert.SerializeObject(message);
+                Console.WriteLine(message1);
+                ServerComponents.SendMessage(server, message1);
             }
         }
 
@@ -165,7 +167,7 @@ namespace DiceGame {
         private void setChoice(int choice) {
             var i = 1;
             foreach (Label l in new Label[] { choice1, choice2, choice3, choice4, choice5, choice6 }) {
-                Console.WriteLine(l.Name);
+                //Console.WriteLine(l.Name);
                 l.Hide();
                 if (i == choice) l.Show();
                 i++;
@@ -267,6 +269,8 @@ namespace DiceGame {
 
                                 gamemain.timeout.Text = (30 - player.timeout).ToString();
 
+                                gamemain.room_code.Text = player.room_code;
+
                                 if (player.timeouts >= 3) throw new Exception("Player was kicked for 3 timeouts.");
 
                             });
@@ -322,7 +326,7 @@ namespace DiceGame {
             public string room_code;
 
             public JoinMessage() {
-                type = ClientMessage.join;
+                type = "join";
             }
         }
     }
@@ -343,6 +347,7 @@ namespace DiceGame {
         public bool hasBet;
         public int timeout;
         public int timeouts;
+        public string room_code;
     }
 }
 

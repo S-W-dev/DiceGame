@@ -51,6 +51,10 @@
             this.name = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.room_code = new System.Windows.Forms.Label();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.choice3 = new System.Windows.Forms.Label();
@@ -70,10 +74,6 @@
             this.choice5 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
             this.tableTable.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -88,6 +88,8 @@
             this.panel13.SuspendLayout();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel17.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -97,8 +99,6 @@
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.panel17.SuspendLayout();
-            this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
             // button5
@@ -453,6 +453,48 @@
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
             // 
+            // panel17
+            // 
+            this.panel17.Controls.Add(this.room_code);
+            this.panel17.Controls.Add(this.panel18);
+            this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel17.Location = new System.Drawing.Point(3, 3);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(289, 173);
+            this.panel17.TabIndex = 18;
+            // 
+            // room_code
+            // 
+            this.room_code.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.room_code.Font = new System.Drawing.Font("Unispace", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.room_code.Location = new System.Drawing.Point(0, 43);
+            this.room_code.Name = "room_code";
+            this.room_code.Size = new System.Drawing.Size(289, 130);
+            this.room_code.TabIndex = 18;
+            this.room_code.Text = "si82k";
+            this.room_code.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel18
+            // 
+            this.panel18.Controls.Add(this.label4);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel18.Location = new System.Drawing.Point(0, 0);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(289, 43);
+            this.panel18.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(289, 43);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Game Code:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoSize = true;
@@ -714,48 +756,6 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(167, 37);
             this.tableLayoutPanel2.TabIndex = 9;
             // 
-            // panel17
-            // 
-            this.panel17.Controls.Add(this.label5);
-            this.panel17.Controls.Add(this.panel18);
-            this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(3, 3);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(289, 173);
-            this.panel17.TabIndex = 18;
-            // 
-            // panel18
-            // 
-            this.panel18.Controls.Add(this.label4);
-            this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel18.Location = new System.Drawing.Point(0, 0);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(289, 43);
-            this.panel18.TabIndex = 0;
-            // 
-            // label4
-            // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(289, 43);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Game Code:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // label5
-            // 
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Font = new System.Drawing.Font("Unispace", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(0, 43);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(289, 130);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "si82k";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // GameMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -785,6 +785,8 @@
             this.panel13.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel17.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -795,8 +797,6 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel17.ResumeLayout(false);
-            this.panel18.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -853,7 +853,7 @@
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label room_code;
     }
 }
 

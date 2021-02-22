@@ -13,9 +13,9 @@ using System.IO;
 namespace DiceGame {
     public partial class PlayerBox : UserControl {
 
-        public int id;
+        public string id;
 
-        public PlayerBox(int _id) {
+        public PlayerBox(string _id) {
             id = _id;
             InitializeComponent();
             setImage();

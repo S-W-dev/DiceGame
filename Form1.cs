@@ -81,14 +81,12 @@ namespace DiceGame {
         List<PlayerBox> pBoxes;
 
         private void UpdatePlayers() {
-            for(var i = 0; i < game.players.Length; i++) {
-
-                var cPlayer = new PlayerBox();
-                cPlayer.Location = new Point(i*100, 0);
-                cPlayer.setImage();
-                cPlayer.setMoney(game.players[i].money);
-                cPlayer.setName(game.players[i].name);
-                cPlayer.setStatus(game.players[i].status);
+            for(var i = 0; i < pBoxes.Count; i++) {
+                pBoxes[i].Location = new Point(i*100, 0);
+                pBoxes[i].setImage();
+                pBoxes[i].setMoney(game.players[i].money);
+                pBoxes[i].setName(game.players[i].name);
+                pBoxes[i].setStatus(game.players[i].status);
             }
         }
 
@@ -295,17 +293,25 @@ namespace DiceGame {
 
                                 });
                             } catch (Exception x) {
-                                if (e.Data == "connected") SendMessage(ws, "connected");
-                                else Console.WriteLine(x);
+                                
                             }
                         }
                         else {
+                            if (e.Data == "connected") {
+                                SendMessage(ws, "connected");
+                            }
                             try {
                                 var message = JsonConvert.DeserializeObject<ServerMessage>(e.Data);
                                 if (message.type == "join") {
-
+                                    gamemain.pBoxes.Add(new PlayerBox(message.socketId));
                                 } else if (message.type == "leave") {
-
+                                    foreach(var pbox in gamemain.pBoxes) {
+                                        if(pbox.id == message.socketId) {
+                                            gamemain.pBoxes.Remove(pbox);
+                                            gamemain.Controls.Remove(pbox);
+                                            break;
+                                        }
+                                    }
                                 }
                             } catch (Exception x) {
 

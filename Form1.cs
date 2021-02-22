@@ -68,8 +68,8 @@ namespace DiceGame {
             }
             //UpdatePlayerDisplay();
 
-            tableTable.ColumnStyles[1].Width = 900f / 1588f * tableTable.Width;
-            tableTable.RowStyles[1].Height = 600f / 841f * tableTable.Height;
+            tableTable.ColumnStyles[2].Width = 800f / 1588f * MainTable.Width;
+            tableTable.RowStyles[2].Height = 400f / 841f * MainTable.Height;
 
             setChoice(1);
 
@@ -102,7 +102,7 @@ namespace DiceGame {
                     playerTable.Controls.Add(label);
                 }
 
-                Controls.Add(playerTable);
+                base.Controls.Add(playerTable);
             } else {
                 TableLayoutPanel playerTable1 = new TableLayoutPanel();
                 playerTable1.Height = 125;
@@ -148,8 +148,8 @@ namespace DiceGame {
                     }
                 }
 
-                Controls.Add(playerTable2);
-                Controls.Add(playerTable1);
+                base.Controls.Add(playerTable2);
+                base.Controls.Add(playerTable1);
             }
         }
 

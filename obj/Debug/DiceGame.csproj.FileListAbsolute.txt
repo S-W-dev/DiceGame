@@ -44,3 +44,4 @@ D:\Repos\DiceGame\bin\Debug\Newtonsoft.Json.xml
 D:\Repos\DiceGame\obj\Debug\DiceGame.GameMain.resources
 C:\Users\14356\Desktop\Coding\DiceGame\DiceGame\DiceGame\obj\Debug\DiceGame.GameMain.resources
 C:\Users\14356\Desktop\Coding\DiceGame\DiceGame\DiceGame\obj\Debug\DiceGame.Start.resources
+D:\Repos\DiceGame\obj\Debug\DiceGame.Start.resources

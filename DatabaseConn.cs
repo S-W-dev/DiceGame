@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace DiceGame {
     public class DatabaseConn {
 
-        static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\14356\Desktop\Coding\DiceGame\DiceGame\DiceGame\Database.mdf;Integrated Security=True";
+        static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True";
 
         string uname, upass;
 

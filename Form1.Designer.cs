@@ -51,9 +51,7 @@
             this.name = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel17 = new System.Windows.Forms.Panel();
             this.room_code = new System.Windows.Forms.Label();
-            this.panel18 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.ControlsTable = new System.Windows.Forms.TableLayoutPanel();
             this.choice1 = new System.Windows.Forms.Label();
@@ -75,6 +73,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.MainTable = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
             this.tableTable.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -89,8 +88,6 @@
             this.panel13.SuspendLayout();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel17.SuspendLayout();
-            this.panel18.SuspendLayout();
             this.ControlsTable.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -101,6 +98,7 @@
             this.panel7.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.MainTable.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button5
@@ -253,7 +251,7 @@
             this.tableTable.Controls.Add(this.panel11, 4, 2);
             this.tableTable.Controls.Add(this.label1, 2, 0);
             this.tableTable.Controls.Add(this.pictureBox1, 4, 0);
-            this.tableTable.Controls.Add(this.panel17, 0, 0);
+            this.tableTable.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.tableTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableTable.Location = new System.Drawing.Point(3, 2);
             this.tableTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -484,52 +482,32 @@
             this.pictureBox1.Location = new System.Drawing.Point(1353, 4);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(229, 88);
+            this.tableTable.SetRowSpan(this.pictureBox1, 2);
+            this.pictureBox1.Size = new System.Drawing.Size(229, 145);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
             // 
-            // panel17
-            // 
-            this.panel17.Controls.Add(this.room_code);
-            this.panel17.Controls.Add(this.panel18);
-            this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(4, 4);
-            this.panel17.Margin = new System.Windows.Forms.Padding(4);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(227, 88);
-            this.panel17.TabIndex = 18;
-            // 
             // room_code
             // 
-            this.room_code.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.room_code.Dock = System.Windows.Forms.DockStyle.Fill;
             this.room_code.Font = new System.Drawing.Font("Unispace", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.room_code.Location = new System.Drawing.Point(0, 53);
+            this.room_code.Location = new System.Drawing.Point(4, 73);
             this.room_code.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.room_code.Name = "room_code";
-            this.room_code.Size = new System.Drawing.Size(227, 35);
+            this.room_code.Size = new System.Drawing.Size(221, 74);
             this.room_code.TabIndex = 18;
             this.room_code.Text = "si82k";
             this.room_code.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel18
-            // 
-            this.panel18.Controls.Add(this.label4);
-            this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel18.Location = new System.Drawing.Point(0, 0);
-            this.panel18.Margin = new System.Windows.Forms.Padding(4);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(227, 53);
-            this.panel18.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Location = new System.Drawing.Point(4, 0);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(227, 53);
+            this.label4.Size = new System.Drawing.Size(221, 73);
             this.label4.TabIndex = 17;
             this.label4.Text = "Game Code:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -827,6 +805,22 @@
             this.MainTable.Size = new System.Drawing.Size(1592, 850);
             this.MainTable.TabIndex = 17;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.room_code, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableTable.SetRowSpan(this.tableLayoutPanel1, 2);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(229, 147);
+            this.tableLayoutPanel1.TabIndex = 19;
+            // 
             // GameMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -856,8 +850,6 @@
             this.panel13.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel17.ResumeLayout(false);
-            this.panel18.ResumeLayout(false);
             this.ControlsTable.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
@@ -875,6 +867,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.MainTable.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -927,11 +920,10 @@
         private System.Windows.Forms.PictureBox roll;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel17;
-        private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label room_code;
         private System.Windows.Forms.TableLayoutPanel MainTable;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 

@@ -74,6 +74,22 @@ namespace DiceGame {
             setChoice(1);
 
             setName("Walter");
+
+        }
+
+        //Player[] currentPlayers;
+        List<PlayerBox> pBoxes;
+
+        private void UpdatePlayers() {
+            for(var i = 0; i < game.players.Length; i++) {
+
+                var cPlayer = new PlayerBox();
+                cPlayer.Location = new Point(i*100, 0);
+                cPlayer.setImage();
+                cPlayer.setMoney(game.players[i].money);
+                cPlayer.setName(game.players[i].name);
+                cPlayer.setStatus(game.players[i].status);
+            }
         }
 
         private void UpdatePlayerDisplay() {
@@ -271,6 +287,9 @@ namespace DiceGame {
 
                                 gamemain.room_code.Text = player.room_code;
 
+                                gamemain.UpdatePlayers();
+                                //gamemain.currentPlayers = game.players;
+
                                 if (player.timeouts >= 3) throw new Exception("Player was kicked for 3 timeouts.");
 
                             });
@@ -343,6 +362,7 @@ namespace DiceGame {
         public string name;
         public string status;
         public int id;
+        public int socketId;
         public int money;
         public bool hasBet;
         public int timeout;

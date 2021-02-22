@@ -261,41 +261,55 @@ namespace DiceGame {
                     GameMain.server = ws;
                     Console.WriteLine(ws);
                     ws.OnMessage += (sender, e) => {
-                        try {
-                            UpdateMessage message = JsonConvert.DeserializeObject<UpdateMessage>(e.Data);
+                        if (e.Data.Contains("bet")) {
+                            try {
+                                UpdateMessage message = JsonConvert.DeserializeObject<UpdateMessage>(e.Data);
 
-                            player = message.player;
-                            game = message;
+                                player = message.player;
+                                game = message;
 
-                            gamemain.Invoke((Action)delegate {
-                                gamemain.money.Text = "You have: $" + player.money;
+                                gamemain.Invoke((Action)delegate {
+                                    gamemain.money.Text = "You have: $" + player.money;
 
-                                Image[] DiceImages = new Image[] { null, Properties.Resources.dice_one, Properties.Resources.dice_two, Properties.Resources.dice_three, Properties.Resources.dice_four, Properties.Resources.dice_five, Properties.Resources.dice_six };
+                                    Image[] DiceImages = new Image[] { null, Properties.Resources.dice_one, Properties.Resources.dice_two, Properties.Resources.dice_three, Properties.Resources.dice_four, Properties.Resources.dice_five, Properties.Resources.dice_six };
 
-                                gamemain.roll.Image = DiceImages[game.roll];
+                                    gamemain.roll.Image = DiceImages[game.roll];
 
-                                try {
-                                    ((PictureBox)gamemain.Controls.Find("roll", false)[0]).Image = DiceImages[game.roll];
-                                } catch (Exception x) { }
+                                    try {
+                                        ((PictureBox)gamemain.Controls.Find("roll", false)[0]).Image = DiceImages[game.roll];
+                                    } catch (Exception x) { }
 
-                                gamemain.name.Text = player.name;
-                                gamemain.status.Text = player.status;
-                                gamemain.betval.Text = "Bet $" + gamemain.setBet + " on:";
-                                gamemain.choice.Image = DiceImages[gamemain.setC];
+                                    gamemain.name.Text = player.name;
+                                    gamemain.status.Text = player.status;
+                                    gamemain.betval.Text = "Bet $" + gamemain.setBet + " on:";
+                                    gamemain.choice.Image = DiceImages[gamemain.setC];
 
-                                gamemain.timeout.Text = (30 - player.timeout).ToString();
+                                    gamemain.timeout.Text = (30 - player.timeout).ToString();
 
-                                gamemain.room_code.Text = player.room_code;
+                                    gamemain.room_code.Text = player.room_code;
 
-                                gamemain.UpdatePlayers();
-                                //gamemain.currentPlayers = game.players;
+                                    gamemain.UpdatePlayers();
+                                    //gamemain.currentPlayers = game.players;
 
-                                if (player.timeouts >= 3) throw new Exception("Player was kicked for 3 timeouts.");
+                                    if (player.timeouts >= 3) throw new Exception("Player was kicked for 3 timeouts.");
 
-                            });
-                        } catch (Exception x) {
-                            if (e.Data == "connected") SendMessage(ws, "connected");
-                            else Console.WriteLine(x);
+                                });
+                            } catch (Exception x) {
+                                if (e.Data == "connected") SendMessage(ws, "connected");
+                                else Console.WriteLine(x);
+                            }
+                        }
+                        else {
+                            try {
+                                var message = JsonConvert.DeserializeObject<ServerMessage>(e.Data);
+                                if (message.type == "join") {
+
+                                } else if (message.type == "leave") {
+
+                                }
+                            } catch (Exception x) {
+
+                            }
                         }
                     };
                     ws.OnError += (sender, e) =>
@@ -313,6 +327,11 @@ namespace DiceGame {
             }
         }
 
+    }
+
+    public class ServerMessage {
+        public string type;
+        public string socketId;
     }
 
     static class ClientMessage {

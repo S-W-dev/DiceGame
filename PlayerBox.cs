@@ -12,7 +12,11 @@ using System.IO;
 
 namespace DiceGame {
     public partial class PlayerBox : UserControl {
-        public PlayerBox() {
+
+        public int id;
+
+        public PlayerBox(int _id) {
+            id = _id;
             InitializeComponent();
             setImage();
         }

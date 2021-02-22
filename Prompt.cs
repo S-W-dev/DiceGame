@@ -31,10 +31,7 @@ namespace DiceGame {
             LoginData data = new LoginData();
 
             if (login.ShowDialog() == DialogResult.OK) {
-
-
-
-                return data;
+                return new DatabaseConn(username.Text, password.Text).Download();
             } else {
                 return data;
             }
@@ -43,8 +40,7 @@ namespace DiceGame {
 
     public class LoginData {
         public string username;
-        public string name;
-        public string money;
+        public int money;
     }
 
     public static class Prompt {

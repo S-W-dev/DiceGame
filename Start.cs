@@ -28,6 +28,12 @@ namespace DiceGame {
         }
 
         private void Start_Load(object sender, EventArgs e) {
+            Console.WriteLine(DatabaseConn.getMoney());
+            Console.WriteLine(DatabaseConn.getUsername());
+            DatabaseConn.setMoney(0);
+            DatabaseConn.setUsername("Bob");
+            Console.WriteLine(DatabaseConn.getMoney());
+            Console.WriteLine(DatabaseConn.getUsername());
         }
 
         private void button4_Click(object sender, EventArgs e) {
@@ -35,7 +41,9 @@ namespace DiceGame {
         }
 
         private void button3_Click_1(object sender, EventArgs e) {
-            
+            LoginData data = Login.ShowDialog("Login to your ConcreteGames account below.", "Login to your ConcreteGames Account");
+            Console.WriteLine(data.money);
+            Console.WriteLine(data.username);
         }
     }
 }

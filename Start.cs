@@ -26,5 +26,16 @@ namespace DiceGame {
 
         private void button3_Click(object sender, EventArgs e) {
         }
+
+        private void Start_Load(object sender, EventArgs e) {
+        }
+
+        private void button4_Click(object sender, EventArgs e) {
+            Alert.ShowDialog("Sign Up not allowed for school version of game.", "School Policy");
+        }
+
+        private void button3_Click_1(object sender, EventArgs e) {
+            
+        }
     }
 }

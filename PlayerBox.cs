@@ -15,11 +15,16 @@ namespace DiceGame {
 
         public string id;
 
-        public PlayerBox(string _id) {
-            id = _id;
+        public PlayerBox() {
             InitializeComponent();
             setImage();
         }
+
+        //public PlayerBox(string _id) {
+        //    InitializeComponent();
+        //    id = _id;
+        //    setImage();
+        //}
 
         public void setName(string name) {
             this.name.Text = name;

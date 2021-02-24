@@ -9,7 +9,6 @@ namespace DiceGame {
 
     public static class Login {
         public static async Task<LoginData> ShowDialog(string text, string caption) {
-            bool loginSuccess = false;
             Form login = new Form() {
                 Width = 500,
                 Height = 170,
@@ -17,8 +16,8 @@ namespace DiceGame {
                 Text = caption,
                 StartPosition = FormStartPosition.CenterScreen
             };
-            Label textLabel = new Label() { Left = 50, Top = 20, Text = text };
-            TextBox username = new TextBox() { Left = 50, Top = 50, Width = 400 };
+            Label textLabel = new Label() { Width = 400,  Left = 50, Top = 20, Text = text };
+            TextBox username = new TextBox() { Text=DatabaseConn.getUsername() == "Player" ? "" : DatabaseConn.getUsername(), Left = 50, Top = 50, Width = 400 };
             TextBox password = new TextBox() { Left = 50, Top = 70, Width = 400 };
             Button confirmation = new Button() { Text = "Login", Left = 350, Width = 100, Top = 70, DialogResult = DialogResult.OK };
             confirmation.Click += (sender, e) => { login.Close(); };
@@ -41,8 +40,9 @@ namespace DiceGame {
     }
 
     public class LoginData {
-        public string username;
-        public int money;
+        public string username = "Player";
+        public int money = 10000;
+        public string image;
     }
 
     public static class Prompt {
@@ -54,7 +54,7 @@ namespace DiceGame {
                 Text = caption,
                 StartPosition = FormStartPosition.CenterScreen
             };
-            Label textLabel = new Label() { Left = 50, Top = 20, Text = text };
+            Label textLabel = new Label() { Width = 400,  Left = 50, Top = 20, Text = text };
             TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
             Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Top = 70, DialogResult = DialogResult.OK };
             confirmation.Click += (sender, e) => { prompt.Close(); };
@@ -76,7 +76,7 @@ namespace DiceGame {
                 Text = caption,
                 StartPosition = FormStartPosition.CenterScreen
             };
-            Label textLabel = new Label() { Left = 50, Top = 20, Text = text };
+            Label textLabel = new Label() { Width = 400,  Left = 50, Top = 20, Text = text };
             TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
             Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Top = 70, DialogResult = DialogResult.OK };
             confirmation.Click += (sender, e) => { alert.Close(); };

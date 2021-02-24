@@ -73,12 +73,12 @@ namespace DiceGame {
 
             setChoice(1);
 
-            setName("Walter");
-
+            setName(DatabaseConn.getUsername());
+            setMoney(DatabaseConn.getMoney());
         }
 
         //Player[] currentPlayers;
-        List<PlayerBox> pBoxes;
+        List<PlayerBox> pBoxes = new List<PlayerBox>();
 
         private void UpdatePlayers() {
             for (var i = 0; i < pBoxes.Count; i++) {
@@ -231,6 +231,12 @@ namespace DiceGame {
             ServerComponents.SendMessage(server, JsonConvert.SerializeObject(message));
         }
 
+        private void setMoney(int money) {
+            var message = new ClientMessage.MoneyMessage();
+            message.money = money;
+            ServerComponents.SendMessage(server, JsonConvert.SerializeObject(message));
+        }
+
         private void plus_Click(object sender, EventArgs e) {
             if (currentBet < player.money) currentBet += 100;
             bet.Text = "$" + currentBet.ToString();
@@ -276,7 +282,7 @@ namespace DiceGame {
                                     try {
                                         ((PictureBox)gamemain.Controls.Find("roll", false)[0]).Image = DiceImages[game.roll];
                                     } catch (Exception x) {
-                                        Console.WriteLine(x);
+                                        //Console.WriteLine(x);
                                     }
 
                                     try {
@@ -291,10 +297,13 @@ namespace DiceGame {
 
                                         gamemain.UpdatePlayers();
 
+                                        DatabaseConn.setMoney(player.money);
+                                        new DatabaseConn("", "").Upload();
+
                                         if (player.timeouts >= 3) throw new Exception("Player was kicked for 3 timeouts.");
 
                                     } catch (Exception x) {
-                                        Console.WriteLine(x);
+                                        //Console.WriteLine(x);
                                     }
 
                                     try {
@@ -312,13 +321,13 @@ namespace DiceGame {
                                             }
                                         }
                                     } catch (Exception x) {
-                                        Console.WriteLine(x);
+                                        //Console.WriteLine(x);
                                     }
 
                                 });
 
                             } catch (Exception x) {
-                                Console.WriteLine(x);
+                                //Console.WriteLine(x);
                             }
                         }
                         
@@ -343,6 +352,7 @@ namespace DiceGame {
         public static string bet = "bet";
         public static string name = "name";
         public static string join = "join";
+        public static string money = "money";
 
         public class ClientMessageObject {
             public string type;
@@ -362,6 +372,14 @@ namespace DiceGame {
 
             public NameMessage() {
                 type = ClientMessage.name;
+            }
+        }
+
+        public class MoneyMessage : ClientMessageObject {
+            public int money;
+
+            public MoneyMessage() {
+                type = ClientMessage.money;
             }
         }
 

@@ -19,6 +19,9 @@ namespace DiceGame {
         public DatabaseConn(string _uname, string _upass) {
             uname = _uname;
             upass = SHA256Hash(_upass);
+            if (_upass != "") {
+                setLoginString(upass);
+            }
         }
 
         public static void setUsername(string _username) {
@@ -77,21 +80,112 @@ namespace DiceGame {
             }
         }
 
+        public static void setImage(string _image) {
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                con.Open();
+                var sql = @"UPDATE player_data SET image = '" + _image + "' WHERE Id = 0";
+                using (var cmd = new SqlCommand(sql, con)) {
+                    cmd.Prepare();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static string getImage() {
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                con.Open();
+                var sql = @"SELECT * FROM player_data";
+                using (var cmd = new SqlCommand(sql, con)) {
+                    using (var rdr = cmd.ExecuteReader()) {
+                        while (rdr.Read()) {
+                            try {
+                                var x = Convert.ToString(rdr["image"]);
+                                if (x == "null") {
+                                    x = null;
+                                }
+                                return x;
+                            } catch (Exception x) { }
+                        }
+                        return null;
+                    }
+                }
+            }
+        }
+
+        public async void DownloadAndSet() {
+            LoginData data = new LoginData();
+            uname = getUsername();
+            data.username = uname;
+            var getData = await Data("download", getLoginString());
+            data.money = getData.money;
+            getData = await Data("getImage", getLoginString());
+            data.image = getData.image;
+            setMoney(data.money);
+            setImage(data.image);
+        }
+
         public async Task<LoginData> Download() {
             LoginData data = new LoginData();
             data.username = uname;
+            //Console.WriteLine("before old get data");
             var getData = await Data("download", upass);
+            //Console.WriteLine("after old get data");
             data.money = getData.money;
+            //Console.WriteLine("before new get data");
+            getData = await Data("getImage", upass);
+            //Console.WriteLine("after new get data");
+            data.image = getData.image;
+            Console.Write(data.image);
             return data;
         }
 
-        public void Upload(int _money) {
-            data myData = new data();
-            myData.money = _money;
-            Data("upload", upass, JsonConvert.SerializeObject(myData));
+        public async void Upload() {
+            try {
+                uname = getUsername();
+                var d = new data();
+                d.money = getMoney();
+                d.image = "";
+                await Data("upload", getLoginString(), JsonConvert.SerializeObject(d));
+            } catch (Exception) { }
         }
 
-        public async Task<data> Data(string operation, string login_string, string data = "null", string server = "https://concretegames.net", string link = "/games/upload_scores.php?", string return_value = "highrollers") {
+        private string getLoginString() {
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                con.Open();
+                var sql = @"SELECT * FROM player_data";
+                using (var cmd = new SqlCommand(sql, con)) {
+                    using (var rdr = cmd.ExecuteReader()) {
+                        while (rdr.Read()) {
+                            try {
+                                var x = Convert.ToString(rdr["login_string"]);
+                                return x;
+                            } catch (Exception x) { }
+                        }
+                        return null;
+                    }
+                }
+            }
+        }
+
+        private void setLoginString(string _login_string) {
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                con.Open();
+                var sql = @"UPDATE player_data SET login_string = '" + _login_string + "' WHERE Id = 0";
+                using (var cmd = new SqlCommand(sql, con)) {
+                    cmd.Prepare();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            Console.WriteLine("Login string: " + getLoginString());
+        }
+
+        //public void Upload(int _money) {
+        //    data myData = new data();
+        //    myData.money = _money;
+        //    Data("upload", upass, JsonConvert.SerializeObject(myData));
+        //}
+
+        public async Task<data> Data(string operation, string login_string, string data = "null", string server = "https://concretegames.net", string link = "/games/highrollers.php?", string return_value = "highrollers") {
             var req = server + link + "username=" + uname + "&login_string=" + login_string + "&operation=" + operation + "&data=" + data + "&return=" + return_value;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(req);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -99,7 +193,7 @@ namespace DiceGame {
 
             string message = "";
 
-            if(output.Contains("error")) {
+            if (output.Contains("error")) {
 
                 if (output.Contains("message")) {
                     message = output.Split('m')[1].Split(':')[1].Replace("'", "").Replace("}", "");
@@ -111,9 +205,16 @@ namespace DiceGame {
 
                 return new data();
 
+            } else if (output == "null" || output == "" || output == null) {
+                return new data();
+            } else if (output[0] == 'h') {
+                var d = new data();
+                d.image = output;
+                return d;
             } else {
-                Console.WriteLine(output);
+                //Console.WriteLine(output);
                 return JsonConvert.DeserializeObject<data>(output);
+                //return null;
             }
 
         }
@@ -131,7 +232,8 @@ namespace DiceGame {
 
         [Serializable]
         public class data {
-            public int money;
+            public int money = 10000;
+            public string image = "https://concretegames.net/uploads/DefaultUser.png";
         }
 
         [Serializable]

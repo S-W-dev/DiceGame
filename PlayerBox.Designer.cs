@@ -75,12 +75,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.name.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.name.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.name.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.name.Location = new System.Drawing.Point(0, 0);
             this.name.Name = "name";
+            this.name.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.name.Size = new System.Drawing.Size(120, 31);
             this.name.TabIndex = 0;
             this.name.Text = "Player";
+            this.name.Click += new System.EventHandler(this.name_Click);
             // 
             // pictureBox1
             // 

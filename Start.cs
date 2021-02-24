@@ -12,6 +12,16 @@ namespace DiceGame {
     public partial class Start : Form {
         public Start() {
             InitializeComponent();
+            playerBox1.setName(DatabaseConn.getUsername());
+            playerBox1.setMoney(DatabaseConn.getMoney());
+            playerBox1.setImage(DatabaseConn.getImage());
+            playerBox1.setClickForName(delegate {
+                DatabaseConn.setUsername(Prompt.ShowDialog("Enter a new username: ", "Enter a new username"));
+                playerBox1.setName(DatabaseConn.getUsername());
+            });
+            try {
+                new DatabaseConn("", "").DownloadAndSet();
+            } catch (Exception) { }
         }
 
         private void button1_Click(object sender, EventArgs e) {
@@ -28,12 +38,7 @@ namespace DiceGame {
         }
 
         private void Start_Load(object sender, EventArgs e) {
-            Console.WriteLine(DatabaseConn.getMoney());
-            Console.WriteLine(DatabaseConn.getUsername());
-            DatabaseConn.setMoney(0);
-            DatabaseConn.setUsername("Bob");
-            Console.WriteLine(DatabaseConn.getMoney());
-            Console.WriteLine(DatabaseConn.getUsername());
+            //Console.WriteLine(DatabaseConn.getUsername());
         }
 
         private void button4_Click(object sender, EventArgs e) {
@@ -42,8 +47,12 @@ namespace DiceGame {
 
         private async void button3_Click_1(object sender, EventArgs e) {
             LoginData data = await Login.ShowDialog("Login to your ConcreteGames account below.", "Login to your ConcreteGames Account");
-            Console.WriteLine(data.money);
-            Console.WriteLine(data.username);
+            DatabaseConn.setUsername(data.username);
+            DatabaseConn.setMoney(data.money);
+            DatabaseConn.setImage(data.image);
+            Console.WriteLine(DatabaseConn.getImage());
+            new Start().Show();
+            this.Hide();
         }
     }
 }

@@ -15,6 +15,9 @@ namespace DiceGame {
 
         public string id;
 
+        private bool hasClickEvent = false;
+        private Action clickEvent;
+
         public PlayerBox() {
             InitializeComponent();
             setImage();
@@ -25,6 +28,11 @@ namespace DiceGame {
         //    id = _id;
         //    setImage();
         //}
+
+        public void setClickForName(Action a) {
+            hasClickEvent = true;
+            clickEvent = a;
+        }
 
         public void setName(string name) {
             this.name.Text = name;
@@ -44,6 +52,10 @@ namespace DiceGame {
 
         public void setImage(string imageUrl = "https://concretegames.net/uploads/DefaultUser.png") {
             pictureBox1.Image = new Bitmap(new WebClient().OpenRead(imageUrl));
+        }
+
+        private void name_Click(object sender, EventArgs e) {
+            if (hasClickEvent) Invoke(clickEvent);
         }
     }
 }

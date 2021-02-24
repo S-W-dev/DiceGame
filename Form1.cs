@@ -268,6 +268,17 @@ namespace DiceGame {
                     ws.OnMessage += (sender, e) => {
                         if (e.Data == "connected") {
                             SendMessage(ws, "connected");
+                            try {
+                                UpdateMessage message = JsonConvert.DeserializeObject<UpdateMessage>(e.Data);
+
+                                var pb = new PlayerBox();
+                                pb.id = message.socketId;
+                                gamemain.pBoxes.Add(pb);
+                                gamemain.Controls.Add(pb);
+                                Console.WriteLine(gamemain.pBoxes);
+                            } catch (Exception x) {
+                                Console.WriteLine(x);
+                            }
                         } else {
                             try {
                                 UpdateMessage message = JsonConvert.DeserializeObject<UpdateMessage>(e.Data);
@@ -311,6 +322,7 @@ namespace DiceGame {
                                             var pb = new PlayerBox();
                                             pb.id = message.socketId;
                                             gamemain.pBoxes.Add(pb);
+                                            gamemain.Controls.Add(pb);
                                         } else if (message.type == "leave") {
                                             foreach (var pbox in gamemain.pBoxes) {
                                                 if (pbox.id == message.socketId) {

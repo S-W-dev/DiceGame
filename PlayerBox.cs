@@ -15,6 +15,8 @@ namespace DiceGame {
             InitializeComponent();
             setImage();
             Show();
+            Margin = Padding.Empty;
+            Padding = Padding.Empty;
         }
 
         //public PlayerBox(string _id) {
@@ -22,6 +24,11 @@ namespace DiceGame {
         //    id = _id;
         //    setImage();
         //}
+
+        public void UpdateScale(float _width, float _height) {
+            Width = (int)(200f / 1592f * _width);
+            Height = (int)(80f / 850f * _height);
+        }
 
         public void setPosition(int x, int y) {
             Location = new Point(x - Width / 2, y - Height / 2);

@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
-using System.IO;
 
 namespace DiceGame {
     public partial class PlayerBox : UserControl {
@@ -21,8 +14,6 @@ namespace DiceGame {
         public PlayerBox() {
             InitializeComponent();
             setImage();
-            BringToFront();
-            Visible = true;
             Show();
         }
 
@@ -31,6 +22,10 @@ namespace DiceGame {
         //    id = _id;
         //    setImage();
         //}
+
+        public void setPosition(int x, int y) {
+            Location = new Point(x - Width / 2, y - Height / 2);
+        }
 
         public void setClickForName(Action a) {
             hasClickEvent = true;

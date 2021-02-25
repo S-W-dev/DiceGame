@@ -15,8 +15,16 @@ namespace DiceGame {
             InitializeComponent();
             setImage();
             Show();
-            Margin = Padding.Empty;
-            Padding = Padding.Empty;
+            Margin = new Padding(0);
+            Padding = new Padding(0);
+            pictureBox1.Margin = new Padding(0);
+            pictureBox1.Padding = new Padding(0);
+            tableLayoutPanel1.Margin = new Padding(0);
+            tableLayoutPanel1.Padding = new Padding(0);
+            panel1.Margin = new Padding(0);
+            panel1.Padding = new Padding(0);
+            panel2.Margin = new Padding(0);
+            panel2.Padding = new Padding(0);
         }
 
         //public PlayerBox(string _id) {

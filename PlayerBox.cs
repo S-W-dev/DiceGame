@@ -21,6 +21,9 @@ namespace DiceGame {
         public PlayerBox() {
             InitializeComponent();
             setImage();
+            BringToFront();
+            Visible = true;
+            Show();
         }
 
         //public PlayerBox(string _id) {

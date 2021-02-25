@@ -11,6 +11,7 @@ using WebSocketSharp;
 using System.Threading;
 using Newtonsoft.Json;
 using DiceGame;
+using System.Windows.Threading;
 
 namespace DiceGame {
     public partial class GameMain : Form {
@@ -261,6 +262,7 @@ namespace DiceGame {
                 gamemain = _gamemain;
             }
 
+            bool hasPlayerJoined = false, canSetHasPlayerJoined = false;
             public void connection() {
                 using (var ws = new WebSocket("ws://concretegames.net:667/socket/?EIO=2&transport=websocket")) {
                     GameMain.server = ws;
@@ -268,20 +270,24 @@ namespace DiceGame {
                     ws.OnMessage += (sender, e) => {
                         if (e.Data == "connected") {
                             SendMessage(ws, "connected");
-                            try {
-                                UpdateMessage message = JsonConvert.DeserializeObject<UpdateMessage>(e.Data);
-
-                                var pb = new PlayerBox();
-                                pb.id = message.socketId;
-                                gamemain.pBoxes.Add(pb);
-                                gamemain.Controls.Add(pb);
-                                Console.WriteLine(gamemain.pBoxes);
-                            } catch (Exception x) {
-                                Console.WriteLine(x);
-                            }
+                            canSetHasPlayerJoined = true;
                         } else {
                             try {
                                 UpdateMessage message = JsonConvert.DeserializeObject<UpdateMessage>(e.Data);
+
+                                /*if (!hasPlayerJoined) {
+                                    try {
+                                        Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => {
+                                            var pb = new PlayerBox();
+                                            pb.id = message.socketId;
+                                            gamemain.pBoxes.Add(pb);
+                                            gamemain.Controls.Add(pb);
+                                        }));
+                                        Console.WriteLine(gamemain.pBoxes);
+                                    } catch (Exception x) {
+                                        Console.WriteLine("Error: " + x);
+                                    }
+                                } else if (canSetHasPlayerJoined) hasPlayerJoined = true;*/
 
                                 player = message.player;
                                 game = message;
@@ -290,59 +296,64 @@ namespace DiceGame {
 
                                 gamemain.Invoke((Action)delegate {
 
-                                    try {
-                                        ((PictureBox)gamemain.Controls.Find("roll", false)[0]).Image = DiceImages[game.roll];
-                                    } catch (Exception x) {
-                                        //Console.WriteLine(x);
-                                    }
+                                    if (message.type == "join" || message.type == "leave") {
+                                        try {
+                                            if (message.type == "join") {
+                                                var pb = new PlayerBox();
+                                                pb.id = message.socketId;
+                                                gamemain.pBoxes.Add(pb);
+                                                gamemain.Controls.Add(pb);
+                                                pb.Show();
+                                                pb.Parent = gamemain.Table;
+                                                Console.WriteLine(gamemain.pBoxes);
+                                                Console.WriteLine(gamemain.pBoxes[0].Location);
 
-                                    try {
-                                        gamemain.money.Text = "You have: $" + player.money;
-                                        gamemain.roll.Image = DiceImages[game.roll];
-                                        gamemain.name.Text = player.name;
-                                        gamemain.status.Text = player.status;
-                                        gamemain.betval.Text = "Bet $" + gamemain.setBet + " on:";
-                                        gamemain.choice.Image = DiceImages[gamemain.setC];
-                                        gamemain.timeout.Text = (30 - player.timeout).ToString();
-                                        gamemain.room_code.Text = player.room_code;
-
-                                        gamemain.UpdatePlayers();
-
-                                        DatabaseConn.setMoney(player.money);
-                                        new DatabaseConn("", "").Upload();
-
-                                        if (player.timeouts >= 3) throw new Exception("Player was kicked for 3 timeouts.");
-
-                                    } catch (Exception x) {
-                                        //Console.WriteLine(x);
-                                    }
-
-                                    try {
-                                        if (message.type == "join") {
-                                            var pb = new PlayerBox();
-                                            pb.id = message.socketId;
-                                            gamemain.pBoxes.Add(pb);
-                                            gamemain.Controls.Add(pb);
-                                        } else if (message.type == "leave") {
-                                            foreach (var pbox in gamemain.pBoxes) {
-                                                if (pbox.id == message.socketId) {
-                                                    gamemain.pBoxes.Remove(pbox);
-                                                    gamemain.Controls.Remove(pbox);
-                                                    break;
+                                            } else if (message.type == "leave") {
+                                                foreach (var pbox in gamemain.pBoxes) {
+                                                    if (pbox.id == message.socketId) {
+                                                        gamemain.pBoxes.Remove(pbox);
+                                                        gamemain.Controls.Remove(pbox);
+                                                        break;
+                                                    }
                                                 }
                                             }
+                                        } catch (Exception x) {
+                                            Console.WriteLine(x);
                                         }
-                                    } catch (Exception x) {
-                                        //Console.WriteLine(x);
+                                    } else {
+                                        try {
+                                            ((PictureBox)gamemain.Controls.Find("roll", false)[0]).Image = DiceImages[game.roll];
+                                        } catch (Exception x) {
+                                            //Console.WriteLine(x);
+                                        }
+
+                                        try {
+                                            gamemain.money.Text = "You have: $" + player.money;
+                                            gamemain.roll.Image = DiceImages[game.roll];
+                                            gamemain.name.Text = player.name;
+                                            gamemain.status.Text = player.status;
+                                            gamemain.betval.Text = "Bet $" + gamemain.setBet + " on:";
+                                            gamemain.choice.Image = DiceImages[gamemain.setC];
+                                            gamemain.timeout.Text = (30 - player.timeout).ToString();
+                                            gamemain.room_code.Text = player.room_code;
+
+                                            gamemain.UpdatePlayers();
+
+                                            DatabaseConn.setMoney(player.money);
+                                            new DatabaseConn("", "").Upload();
+
+                                            if (player.timeouts >= 3) throw new Exception("Player was kicked for 3 timeouts.");
+
+                                        } catch (Exception x) {
+                                            //Console.WriteLine(x);
+                                        }
                                     }
-
                                 });
-
                             } catch (Exception x) {
                                 //Console.WriteLine(x);
                             }
                         }
-                        
+
                     };
                     ws.OnError += (sender, e) =>
                         Console.WriteLine("Error: " + e.Message);

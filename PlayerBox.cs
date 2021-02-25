@@ -28,6 +28,11 @@ namespace DiceGame {
         public void UpdateScale(float _width, float _height) {
             Width = (int)(200f / 1592f * _width);
             Height = (int)(80f / 850f * _height);
+            FixProfilePicSize();
+        }
+
+        public void FixProfilePicSize() {
+            tableLayoutPanel1.ColumnStyles[0].Width = Height;
         }
 
         public void setPosition(int x, int y) {
@@ -61,6 +66,10 @@ namespace DiceGame {
 
         private void name_Click(object sender, EventArgs e) {
             if (hasClickEvent) Invoke(clickEvent);
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) {
+
         }
     }
 }

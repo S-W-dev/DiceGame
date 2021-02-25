@@ -54,5 +54,9 @@ namespace DiceGame {
             new Start().Show();
             this.Hide();
         }
+
+        private void playerBox1_SizeChanged(object sender, EventArgs e) {
+            playerBox1.FixProfilePicSize();
+        }
     }
 }

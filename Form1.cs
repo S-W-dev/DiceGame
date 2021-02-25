@@ -69,8 +69,8 @@ namespace DiceGame {
             }
             //UpdatePlayerDisplay();
 
-            tableTable.ColumnStyles[2].Width = 800f / 1588f * MainTable.Width;
-            tableTable.RowStyles[2].Height = 400f / 841f * MainTable.Height;
+            tableTable.ColumnStyles[2].Width = 800f / 1588f * MainPanel.Width;
+            tableTable.RowStyles[2].Height = 400f / 841f * MainPanel.Height;
 
             setChoice(1);
 
@@ -304,7 +304,8 @@ namespace DiceGame {
                                                 gamemain.pBoxes.Add(pb);
                                                 gamemain.Controls.Add(pb);
                                                 pb.Show();
-                                                pb.Parent = gamemain.Table;
+                                                pb.Parent = gamemain.MainPanel;
+                                                pb.BringToFront();
                                                 Console.WriteLine(gamemain.pBoxes);
                                                 Console.WriteLine(gamemain.pBoxes[0].Location);
 

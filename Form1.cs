@@ -43,6 +43,8 @@ namespace DiceGame {
                 Console.WriteLine(message1);
                 ServerComponents.SendMessage(server, message1);
             }
+
+            Console.WriteLine("ORIGINAL SIZE: " + Width);
         }
 
         protected override void WndProc(ref Message message) {
@@ -72,22 +74,38 @@ namespace DiceGame {
             tableTable.ColumnStyles[2].Width = 800f / 1592f * MainPanel.Width;
             tableTable.RowStyles[2].Height = 400f / 850f * MainPanel.Height;
 
+            Console.WriteLine("LOG 1: " + MainPanel.Width);
+
             setChoice(1);
 
             setName(DatabaseConn.getUsername());
             setMoney(DatabaseConn.getMoney());
+            UpdatePlayers();
         }
 
         //Player[] currentPlayers;
         List<PlayerBox> pBoxes = new List<PlayerBox>();
 
+        int[][][] DefaultPositions = { new int[][] { new int[] { 597, 185 } }, 
+                                       new int[][] { new int[] { 0, 0 } } 
+                                     };
+
         private void UpdatePlayers() {
+            DefaultPositions = new int[][][] {
+                                //new int[][] { new int[] { MainPanel.Width/2, (int)(MainPanel.Height / 2 - (400f / 850f * MainPanel.Height) / 2) } }, 
+                                new int[][] { new int[] { 1592 / 2, 0 } },
+                                new int[][] { new int[] { 0, 0 } }
+                               };
+            Console.WriteLine("LOG 2: " + MainPanel.Width);
             for (var i = 0; i < pBoxes.Count; i++) {
-                pBoxes[i].Location = new Point(i * 100, 0);
+                pBoxes[i].UpdateScale(MainPanel.Width, MainPanel.Height);
+                pBoxes[i].setPosition((int)(DefaultPositions[pBoxes.Count - 1][i][0] / 1592f * MainPanel.Width), (int)(DefaultPositions[pBoxes.Count - 1][i][1] / 850f * MainPanel.Height));
+                //pBoxes[i].Location = new Point(i * 100, 0);
                 pBoxes[i].setImage();
                 pBoxes[i].setMoney(game.players[i].money);
                 pBoxes[i].setName(game.players[i].name);
                 pBoxes[i].setStatus(game.players[i].status);
+                pBoxes[i].Show();
             }
         }
 
@@ -300,10 +318,11 @@ namespace DiceGame {
                                         try {
                                             if (message.type == "join") {
                                                 var pb = new PlayerBox();
+
                                                 pb.id = message.socketId;
                                                 gamemain.pBoxes.Add(pb);
                                                 gamemain.Controls.Add(pb);
-                                                pb.Show();
+                                                pb.Hide();
                                                 pb.Parent = gamemain.MainPanel;
                                                 pb.BringToFront();
                                                 Console.WriteLine(gamemain.pBoxes);

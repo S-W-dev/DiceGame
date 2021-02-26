@@ -119,83 +119,6 @@ namespace DiceGame {
             }
         }
 
-        private void UpdatePlayerDisplay() {
-            var numOfPlayers = game.players.Length;
-            //numOfPlayers = 3;
-            if (numOfPlayers < 5) {
-                TableLayoutPanel playerTable = new TableLayoutPanel();
-                playerTable.Height = 125;
-                playerTable.Dock = DockStyle.Top;
-
-                playerTable.BackColor = Color.Transparent;
-
-                playerTable.RowCount = 1;
-                playerTable.RowStyles.Add(new RowStyle(SizeType.Percent, 100f));
-                playerTable.ColumnCount = numOfPlayers;
-                for (var i = 0; i < numOfPlayers; i++) {
-                    playerTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / (numOfPlayers)));
-                }
-
-                for (var i = 0; i < numOfPlayers; i++) {
-                    var label = new Label();
-                    label.Dock = DockStyle.Fill;
-                    label.TextAlign = ContentAlignment.MiddleCenter;
-                    label.Text = game.players[i].name;
-                    label.Font = new Font("Arial", 25);
-                    playerTable.Controls.Add(label);
-                }
-
-                base.Controls.Add(playerTable);
-            } else {
-                TableLayoutPanel playerTable1 = new TableLayoutPanel();
-                playerTable1.Height = 125;
-                playerTable1.Dock = DockStyle.Top;
-
-                playerTable1.BackColor = Color.Transparent;
-
-                playerTable1.RowCount = 1;
-                playerTable1.RowStyles.Add(new RowStyle(SizeType.Percent, 100f));
-                playerTable1.ColumnCount = 4;
-                for (var i = 0; i < 4; i++) {
-                    playerTable1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25f));
-                }
-
-                TableLayoutPanel playerTable2 = new TableLayoutPanel();
-                playerTable2.Height = 125;
-                playerTable2.Dock = DockStyle.Top;
-
-                playerTable2.BackColor = Color.Transparent;
-
-                playerTable2.RowCount = 1;
-                playerTable2.RowStyles.Add(new RowStyle(SizeType.Percent, 100f));
-                playerTable2.ColumnCount = numOfPlayers - 4;
-                for (var i = 0; i < numOfPlayers - 4; i++) {
-                    playerTable2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / (numOfPlayers - 4)));
-                }
-
-                for (var i = 0; i < numOfPlayers; i++) {
-                    if (i < 4) {
-                        var label = new Label();
-                        label.Dock = DockStyle.Fill;
-                        label.TextAlign = ContentAlignment.MiddleCenter;
-                        label.Text = game.players[i].name;
-                        label.Font = new Font("Arial", 25);
-                        playerTable1.Controls.Add(label);
-                    } else {
-                        var label = new Label();
-                        label.Dock = DockStyle.Fill;
-                        label.TextAlign = ContentAlignment.MiddleCenter;
-                        label.Text = game.players[i].name;
-                        label.Font = new Font("Arial", 25);
-                        playerTable2.Controls.Add(label);
-                    }
-                }
-
-                base.Controls.Add(playerTable2);
-                base.Controls.Add(playerTable1);
-            }
-        }
-
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
             server.Close();
             conn.Abort();
@@ -320,67 +243,72 @@ namespace DiceGame {
                                         Console.WriteLine("Error: " + x);
                                     }
                                 } else if (canSetHasPlayerJoined) hasPlayerJoined = true;*/
-
                                 player = message.player;
                                 game = message;
-
                                 Image[] DiceImages = new Image[] { null, Properties.Resources.dice_one, Properties.Resources.dice_two, Properties.Resources.dice_three, Properties.Resources.dice_four, Properties.Resources.dice_five, Properties.Resources.dice_six };
 
                                 gamemain.Invoke((Action)delegate {
+                                    List<string> pbIDs = new List<string>();
+                                    List<string> gpIDs = new List<string>();
 
-                                    if (message.type == "join" || message.type == "leave") {
-                                        try {
-                                            if (message.type == "join") {
-                                                var pb = new PlayerBox();
+                                    foreach (var p in gamemain.pBoxes) {
+                                        pbIDs.Add(p.id);
+                                    }
 
-                                                pb.id = message.socketId;
-                                                gamemain.pBoxes.Add(pb);
-                                                gamemain.Controls.Add(pb);
-                                                pb.Hide();
-                                                pb.Parent = gamemain.MainPanel;
-                                                pb.BringToFront();
-                                                Console.WriteLine(gamemain.pBoxes);
-                                                Console.WriteLine(gamemain.pBoxes[0].Location);
+                                    foreach (var gp in game.players) {
+                                        gpIDs.Add(gp.socketId);
+                                    }
 
-                                            } else if (message.type == "leave") {
-                                                foreach (var pbox in gamemain.pBoxes) {
-                                                    if (pbox.id == message.socketId) {
-                                                        gamemain.pBoxes.Remove(pbox);
-                                                        gamemain.Controls.Remove(pbox);
-                                                        break;
-                                                    }
+                                    foreach (var pid in pbIDs) {
+                                        if (!gpIDs.Contains(pid)) { //remove player
+                                            foreach (var pbox in gamemain.pBoxes) {
+                                                if (pbox.id == pid) {
+                                                    gamemain.pBoxes.Remove(pbox);
+                                                    gamemain.Controls.Remove(pbox);
+                                                    break;
                                                 }
                                             }
-                                        } catch (Exception x) {
-                                            Console.WriteLine(x);
                                         }
-                                    } else {
-                                        try {
-                                            ((PictureBox)gamemain.Controls.Find("roll", false)[0]).Image = DiceImages[game.roll];
-                                        } catch (Exception x) {
-                                            //Console.WriteLine(x);
+                                    }
+
+                                    foreach (var gpid in gpIDs) {
+                                        if (!pbIDs.Contains(gpid)) { //add player
+                                            var pb = new PlayerBox();
+
+                                            pb.id = gpid;
+                                            gamemain.pBoxes.Add(pb);
+                                            gamemain.Controls.Add(pb);
+                                            pb.Hide();
+                                            pb.Parent = gamemain.MainPanel;
+                                            pb.BringToFront();
                                         }
+                                    }
 
-                                        try {
-                                            gamemain.money.Text = "You have: $" + player.money;
-                                            gamemain.roll.Image = DiceImages[game.roll];
-                                            gamemain.name.Text = player.name;
-                                            gamemain.status.Text = player.status;
-                                            gamemain.betval.Text = "Bet $" + gamemain.setBet + " on:";
-                                            gamemain.choice.Image = DiceImages[gamemain.setC];
-                                            gamemain.timeout.Text = (30 - player.timeout).ToString();
-                                            gamemain.room_code.Text = player.room_code;
+                                    try {
+                                        ((PictureBox)gamemain.Controls.Find("roll", false)[0]).Image = DiceImages[game.roll];
+                                    } catch (Exception x) {
+                                        //Console.WriteLine(x);
+                                    }
 
-                                            gamemain.UpdatePlayers();
+                                    try {
+                                        gamemain.money.Text = "You have: $" + player.money;
+                                        gamemain.roll.Image = DiceImages[game.roll];
+                                        gamemain.name.Text = player.name;
+                                        gamemain.status.Text = player.status;
+                                        gamemain.betval.Text = "Bet $" + gamemain.setBet + " on:";
+                                        gamemain.choice.Image = DiceImages[gamemain.setC];
+                                        gamemain.timeout.Text = (30 - player.timeout).ToString();
+                                        gamemain.room_code.Text = player.room_code;
 
-                                            DatabaseConn.setMoney(player.money);
-                                            new DatabaseConn("", "").Upload();
+                                        gamemain.UpdatePlayers();
 
-                                            if (player.timeouts >= 3) throw new Exception("Player was kicked for 3 timeouts.");
+                                        DatabaseConn.setMoney(player.money);
+                                        new DatabaseConn("", "").Upload();
 
-                                        } catch (Exception x) {
-                                            //Console.WriteLine(x);
-                                        }
+                                        if (player.timeouts >= 3) throw new Exception("Player was kicked for 3 timeouts.");
+
+                                    } catch (Exception x) {
+                                        //Console.WriteLine(x);
                                     }
                                 });
                             } catch (Exception x) {

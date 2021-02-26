@@ -71,8 +71,10 @@ namespace DiceGame {
             }
             //UpdatePlayerDisplay();
 
-            tableTable.ColumnStyles[2].Width = 800f / 1592f * MainPanel.Width;
-            tableTable.RowStyles[2].Height = 400f / 850f * MainPanel.Height;
+            tableTable.ColumnStyles[2].Width = 700f / 1592f * MainPanel.Width;
+            tableTable.RowStyles[2].Height = 350f / 850f * MainPanel.Height;
+
+            Console.WriteLine(Table.Location);
 
             Console.WriteLine("LOG 1: " + MainPanel.Width);
 
@@ -91,15 +93,23 @@ namespace DiceGame {
                                      };
 
         private void UpdatePlayers() {
+            int tableCenterX = MainPanel.Width/2;
+            int tableCenterY = Table.Location.Y + Table.Height/2;
             DefaultPositions = new int[][][] {
                                 //new int[][] { new int[] { MainPanel.Width/2, (int)(MainPanel.Height / 2 - (400f / 850f * MainPanel.Height) / 2) } }, 
-                                new int[][] { new int[] { 1592 / 2, 0 } },
-                                new int[][] { new int[] { 0, 0 } }
+                                new int[][] { new int[] { 0, 225 } },
+                                new int[][] { new int[] { 0, 225 }, new int[] { 0, -225 } },
+                                new int[][] { new int[] { 0, 225 }, new int[] { 0, -225 }, new int[] { -450, 0 } },
+                                new int[][] { new int[] { 0, 225 }, new int[] { 0, -225 }, new int[] { -450, 0 }, new int[] { 450, 0 } },
+                                new int[][] { new int[] { -120, 225 }, new int[] { 0, -225 }, new int[] { -450, 0 }, new int[] { 450, 0 }, new int[] { 120, 225 } },
+                                new int[][] { new int[] { -120, 225 }, new int[] { 120, -225 }, new int[] { -450, 0 }, new int[] { 450, 0 }, new int[] { 120, 225 }, new int[] { -120, -225 } },
+                                new int[][] { new int[] { -120, 225 }, new int[] { 0, -225 }, new int[] { -450, 0 }, new int[] { 450, 0 }, new int[] { 120, 225 }, new int[] { -380, -170 }, new int[] { 380, -170 } },
+                                new int[][] { new int[] { 0, 225 }, new int[] { 0, -225 }, new int[] { -450, 0 }, new int[] { 450, 0 }, new int[] { 380, 170 }, new int[] { -380, -170 }, new int[] { 380, -170 }, new int[] { -380, 170 } }
                                };
             Console.WriteLine("LOG 2: " + MainPanel.Width);
             for (var i = 0; i < pBoxes.Count; i++) {
                 pBoxes[i].UpdateScale(MainPanel.Width, MainPanel.Height);
-                pBoxes[i].setPosition((int)(DefaultPositions[pBoxes.Count - 1][i][0] / 1592f * MainPanel.Width), (int)(DefaultPositions[pBoxes.Count - 1][i][1] / 850f * MainPanel.Height));
+                pBoxes[i].setPosition((int)(DefaultPositions[pBoxes.Count - 1][i][0] / 1592f * MainPanel.Width) + tableCenterX, tableCenterY - (int)(DefaultPositions[pBoxes.Count - 1][i][1] / 850f * MainPanel.Height));
                 //pBoxes[i].Location = new Point(i * 100, 0);
                 pBoxes[i].setImage();
                 pBoxes[i].setMoney(game.players[i].money);
@@ -271,6 +281,10 @@ namespace DiceGame {
         }
 
         private void label4_Click(object sender, EventArgs e) {
+
+        }
+
+        private void roll_Click(object sender, EventArgs e) {
 
         }
 

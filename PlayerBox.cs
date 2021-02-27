@@ -59,7 +59,7 @@ namespace DiceGame {
         }
 
         public void setImage(string imageUrl = "https://concretegames.net/uploads/DefaultUser.png") {
-            pictureBox1.Image = new Bitmap(new WebClient().OpenRead(imageUrl));
+            pictureBox1.Image = new Bitmap(new WebClient().OpenRead(imageUrl != null ? imageUrl : "https://concretegames.net/uploads/DefaultUser.png"));
         }
 
         private void name_Click(object sender, EventArgs e) {

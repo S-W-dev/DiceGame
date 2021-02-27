@@ -82,6 +82,8 @@ namespace DiceGame {
 
             setName(DatabaseConn.getUsername());
             setMoney(DatabaseConn.getMoney());
+            setImage(DatabaseConn.getImage());
+
             UpdatePlayers();
         }
 
@@ -111,7 +113,8 @@ namespace DiceGame {
                 pBoxes[i].UpdateScale(MainPanel.Width, MainPanel.Height);
                 pBoxes[i].setPosition((int)(DefaultPositions[pBoxes.Count - 1][i][0] / 1592f * MainPanel.Width) + tableCenterX, tableCenterY - (int)(DefaultPositions[pBoxes.Count - 1][i][1] / 850f * MainPanel.Height));
                 //pBoxes[i].Location = new Point(i * 100, 0);
-                pBoxes[i].setImage();
+                pBoxes[i].setImage(game.players[i].image);
+                Console.WriteLine(game.players[i].image);
                 pBoxes[i].setMoney(game.players[i].money);
                 pBoxes[i].setName(game.players[i].name);
                 pBoxes[i].setStatus(game.players[i].status);
@@ -189,6 +192,12 @@ namespace DiceGame {
             ServerComponents.SendMessage(server, JsonConvert.SerializeObject(message));
         }
 
+        private void setImage(string image) {
+            var message = new ClientMessage.ImageMessage();
+            message.image = image;
+            ServerComponents.SendMessage(server, JsonConvert.SerializeObject(message));
+        }
+
         private void plus_Click(object sender, EventArgs e) {
             if (currentBet < player.money) currentBet += 100;
             bet.Text = "$" + currentBet.ToString();
@@ -229,20 +238,6 @@ namespace DiceGame {
                         } else {
                             try {
                                 UpdateMessage message = JsonConvert.DeserializeObject<UpdateMessage>(e.Data);
-
-                                /*if (!hasPlayerJoined) {
-                                    try {
-                                        Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => {
-                                            var pb = new PlayerBox();
-                                            pb.id = message.socketId;
-                                            gamemain.pBoxes.Add(pb);
-                                            gamemain.Controls.Add(pb);
-                                        }));
-                                        Console.WriteLine(gamemain.pBoxes);
-                                    } catch (Exception x) {
-                                        Console.WriteLine("Error: " + x);
-                                    }
-                                } else if (canSetHasPlayerJoined) hasPlayerJoined = true;*/
                                 player = message.player;
                                 game = message;
                                 Image[] DiceImages = new Image[] { null, Properties.Resources.dice_one, Properties.Resources.dice_two, Properties.Resources.dice_three, Properties.Resources.dice_four, Properties.Resources.dice_five, Properties.Resources.dice_six };
@@ -308,11 +303,11 @@ namespace DiceGame {
                                         if (player.timeouts >= 3) throw new Exception("Player was kicked for 3 timeouts.");
 
                                     } catch (Exception x) {
-                                        //Console.WriteLine(x);
+                                        Console.WriteLine(x);
                                     }
                                 });
                             } catch (Exception x) {
-                                //Console.WriteLine(x);
+                                Console.WriteLine(x);
                             }
                         }
 
@@ -338,6 +333,7 @@ namespace DiceGame {
         public static string name = "name";
         public static string join = "join";
         public static string money = "money";
+        public static string image = "image";
 
         public class ClientMessageObject {
             public string type;
@@ -368,6 +364,14 @@ namespace DiceGame {
             }
         }
 
+        public class ImageMessage : ClientMessageObject {
+            public string image;
+
+            public ImageMessage() {
+                type = ClientMessage.image;
+            }
+        }
+
         public class JoinMessage : ClientMessageObject {
             public string room_code;
 
@@ -395,6 +399,7 @@ namespace DiceGame {
         public int timeout;
         public int timeouts;
         public string room_code;
+        public string image;
     }
 }
 

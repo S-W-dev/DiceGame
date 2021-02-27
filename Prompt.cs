@@ -19,7 +19,7 @@ namespace DiceGame {
             Label textLabel = new Label() { Width = 400,  Left = 50, Top = 20, Text = text };
             TextBox username = new TextBox() { Text=DatabaseConn.getUsername() == "Player" ? "" : DatabaseConn.getUsername(), Left = 50, Top = 50, Width = 400 };
             TextBox password = new TextBox() { Left = 50, Top = 70, Width = 400 };
-            Button confirmation = new Button() { Text = "Login", Left = 350, Width = 100, Top = 70, DialogResult = DialogResult.OK };
+            Button confirmation = new Button() { Text = "Login", Left = 350, Width = 100, Top = 90, DialogResult = DialogResult.OK };
             confirmation.Click += (sender, e) => { login.Close(); };
             login.Controls.Add(username);
             login.Controls.Add(password);

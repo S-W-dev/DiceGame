@@ -226,6 +226,10 @@ namespace DiceGame {
                 gamemain = _gamemain;
             }
 
+            string[] StatusArray = new string[] { "Won the Bet!", "Lost the Bet!" };
+            string[] GetStatusArray = new string[] { "Won the Bet!", "Lost the Bet!" };
+
+
             bool hasPlayerJoined = false, canSetHasPlayerJoined = false;
             public void connection() {
                 using (var ws = new WebSocket("ws://concretegames.net:667/socket/?EIO=2&transport=websocket")) {
@@ -280,14 +284,42 @@ namespace DiceGame {
                                     }
 
                                     try {
+                                        var rollpb = new PictureBox();
+                                        rollpb.Size = new Size(200, 200);
+                                        rollpb.Location = new Point((gamemain.Table.Location.X + gamemain.Table.Width / 2) - rollpb.Width / 2, (gamemain.Table.Location.Y + gamemain.Table.Height / 2) - rollpb.Height / 2);
+                                        rollpb.Name = "roll";
+                                        rollpb.Parent = gamemain.MainPanel;
+                                        gamemain.Controls.Add(rollpb);
+                                        rollpb.Show();
+                                        rollpb.BringToFront();
+                                        rollpb.Image = DiceImages[1];
+                                        rollpb.SizeMode = PictureBoxSizeMode.CenterImage;
+                                    } catch (Exception) { }
+
+                                    try {
                                         ((PictureBox)gamemain.Controls.Find("roll", false)[0]).Image = DiceImages[game.roll];
                                     } catch (Exception x) {
                                         //Console.WriteLine(x);
                                     }
 
                                     try {
+                                        switch (player.status) {
+                                            case "Lost Game":
+                                                gamemain.oldstatus.Text = "Lost the Game!";
+                                                break;
+                                            case "Lost Bet":
+                                                gamemain.oldstatus.Text = "Lost the Bet!";
+                                                break;
+                                            case "Won Game!":
+                                                gamemain.oldstatus.Text = "Won the Game!";
+                                                break;
+                                            case "Won Bet!":
+                                                gamemain.oldstatus.Text = "Won the Bet!";
+                                                break;
+                                            default:
+                                                break;
+                                        }
                                         gamemain.money.Text = "You have: $" + player.money;
-                                        gamemain.roll.Image = DiceImages[game.roll];
                                         gamemain.name.Text = player.name;
                                         gamemain.status.Text = player.status;
                                         gamemain.betval.Text = "Bet $" + gamemain.setBet + " on:";
@@ -300,7 +332,9 @@ namespace DiceGame {
                                         DatabaseConn.setMoney(player.money);
                                         new DatabaseConn("", "").Upload();
 
-                                        if (player.timeouts >= 3) throw new Exception("Player was kicked for 3 timeouts.");
+                                        if (player.timeouts >= 3) {
+                                            Application.Exit();
+                                        }
 
                                     } catch (Exception x) {
                                         Console.WriteLine(x);

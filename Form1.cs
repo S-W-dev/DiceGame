@@ -308,12 +308,14 @@ namespace DiceGame {
                                         switch (player.status) {
                                             case "Lost Game":
                                                 gamemain.oldstatus.Text = "Lost the Game!";
+                                                Alert.ShowDialog("You lost the game!", "You Lost");
                                                 break;
                                             case "Lost Bet":
                                                 gamemain.oldstatus.Text = "Lost the Bet!";
                                                 break;
                                             case "Won Game!":
                                                 gamemain.oldstatus.Text = "Won the Game!";
+                                                Alert.ShowDialog("You WON the game!", "You Won!");
                                                 break;
                                             case "Won Bet!":
                                                 gamemain.oldstatus.Text = "Won the Bet!";
@@ -335,6 +337,7 @@ namespace DiceGame {
                                         new DatabaseConn("", "").Upload();
 
                                         if (player.timeouts >= 3) {
+                                            Alert.ShowDialog("You have been kicked from the game for being idle.", "You have been kicked.");
                                             Application.Exit();
                                         }
 

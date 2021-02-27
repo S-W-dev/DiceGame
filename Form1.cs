@@ -26,6 +26,8 @@ namespace DiceGame {
         public GameMain(bool join) {
             InitializeComponent();
 
+            new DatabaseConn("", "").DownloadAndSet();
+
             TopMost = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             WindowState = FormWindowState.Maximized;

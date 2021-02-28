@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -8,11 +9,13 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms;
 
 namespace DiceGame {
     public class DatabaseConn {
 
-        static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True";
+        static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + System.Windows.Forms.Application.StartupPath + "\\Database.mdf;Integrated Security=True";
 
         string uname, upass;
 
@@ -22,6 +25,31 @@ namespace DiceGame {
             if (_upass != "") {
                 setLoginString(upass);
             }
+        }
+
+        public static void Init() {
+            SqlConnection myConn = new SqlConnection(connectionString);
+            string str = "CREATE TABLE [dbo].[player_data] (" +
+                        "[Id]           INT          NOT NULL, " +
+                        "[username]     VARCHAR (12) DEFAULT ('Player') NOT NULL, " +
+                        "[money]        NCHAR (10)   DEFAULT ((10000)) NOT NULL, " +
+                        "[image]        TEXT         DEFAULT ('https://concretegames.net/uploads/DefaultUser.png') NOT NULL, " +
+                        "[login_string] TEXT         NULL, " +
+                        "PRIMARY KEY CLUSTERED ([Id] ASC) ";
+
+            SqlCommand myCommand = new SqlCommand(str, myConn);
+            try {
+                myConn.Open();
+                myCommand.ExecuteNonQuery();
+                System.Windows.Forms.MessageBox.Show("DataBase is Created Successfully", "MyProgram", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } catch (System.Exception ex) {
+                System.Windows.Forms.MessageBox.Show(ex.ToString(), "MyProgram", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } finally {
+                if (myConn.State == ConnectionState.Open) {
+                    myConn.Close();
+                }
+            }
+
         }
 
         public static void setUsername(string _username) {

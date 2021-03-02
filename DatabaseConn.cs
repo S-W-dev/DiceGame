@@ -25,91 +25,97 @@ namespace DiceGame {
         }
 
         public static void setUsername(string _username) {
-            using (SqlConnection con = new SqlConnection(connectionString)) {
-                con.Open();
-                var sql = @"UPDATE player_data SET username = '" + _username + "' WHERE Id = 0";
-                using (var cmd = new SqlCommand(sql, con)) {
-                    cmd.Prepare();
-                    cmd.ExecuteNonQuery();
-                }
-            }
+            Properties.Settings.Default.Username = _username;
+            //using (SqlConnection con = new SqlConnection(connectionString)) {
+            //    con.Open();
+            //    var sql = @"UPDATE player_data SET username = '" + _username + "' WHERE Id = 0";
+            //    using (var cmd = new SqlCommand(sql, con)) {
+            //        cmd.Prepare();
+            //        cmd.ExecuteNonQuery();
+            //    }
+            //}
         }
 
         public static string getUsername() {
-            using (SqlConnection con = new SqlConnection(connectionString)) {
-                con.Open();
-                var sql = @"SELECT * FROM player_data";
-                using (var cmd = new SqlCommand(sql, con)) {
-                    using (var rdr = cmd.ExecuteReader()) {
-                        while (rdr.Read()) {
-                            try {
-                                return Convert.ToString(rdr["username"]);
-                            } catch (Exception x) { }
-                        }
-                        return null;
-                    }
-                }
-            }
+            //using (SqlConnection con = new SqlConnection(connectionString)) {
+            //    con.Open();
+            //    var sql = @"SELECT * FROM player_data";
+            //    using (var cmd = new SqlCommand(sql, con)) {
+            //        using (var rdr = cmd.ExecuteReader()) {
+            //            while (rdr.Read()) {
+            //                try {
+            //                    return Convert.ToString(rdr["username"]);
+            //                } catch (Exception x) { }
+            //            }
+            //            return null;
+            //        }
+            //    }
+            //}
+            return Properties.Settings.Default.Username;
         }
 
         public static void setMoney(int _money) {
-            using (SqlConnection con = new SqlConnection(connectionString)) {
-                con.Open();
-                var sql = @"UPDATE player_data SET money = " + _money + " WHERE Id = 0";
-                using (var cmd = new SqlCommand(sql, con)) {
-                    cmd.Prepare();
-                    cmd.ExecuteNonQuery();
-                }
-            }
+            //using (SqlConnection con = new SqlConnection(connectionString)) {
+            //    con.Open();
+            //    var sql = @"UPDATE player_data SET money = " + _money + " WHERE Id = 0";
+            //    using (var cmd = new SqlCommand(sql, con)) {
+            //        cmd.Prepare();
+            //        cmd.ExecuteNonQuery();
+            //    }
+            //}
+            Properties.Settings.Default.Money = _money;
         }
 
         public static int getMoney() {
-            using (SqlConnection con = new SqlConnection(connectionString)) {
-                con.Open();
-                var sql = @"SELECT * FROM player_data";
-                using (var cmd = new SqlCommand(sql, con)) {
-                    using (var rdr = cmd.ExecuteReader()) {
-                        while (rdr.Read()) {
-                            try {
-                                return Convert.ToInt32(rdr["money"]);
-                            } catch (Exception x) { }
-                        }
-                        return 0;
-                    }
-                }
-            }
+            return Properties.Settings.Default.Money;
+            //using (SqlConnection con = new SqlConnection(connectionString)) {
+            //    con.Open();
+            //    var sql = @"SELECT * FROM player_data";
+            //    using (var cmd = new SqlCommand(sql, con)) {
+            //        using (var rdr = cmd.ExecuteReader()) {
+            //            while (rdr.Read()) {
+            //                try {
+            //                    return Convert.ToInt32(rdr["money"]);
+            //                } catch (Exception x) { }
+            //            }
+            //            return 0;
+            //        }
+            //    }
+            //}
         }
 
         public static void setImage(string _image) {
-            using (SqlConnection con = new SqlConnection(connectionString)) {
-                con.Open();
-                var sql = @"UPDATE player_data SET image = '" + _image + "' WHERE Id = 0";
-                using (var cmd = new SqlCommand(sql, con)) {
-                    cmd.Prepare();
-                    cmd.ExecuteNonQuery();
-                }
-            }
+            //using (SqlConnection con = new SqlConnection(connectionString)) {
+            //    con.Open();
+            //    var sql = @"UPDATE player_data SET image = '" + _image + "' WHERE Id = 0";
+            //    using (var cmd = new SqlCommand(sql, con)) {
+            //        cmd.Prepare();
+            //        cmd.ExecuteNonQuery();
+            //    }
+            //}
+            Properties.Settings.Default.Pfp = _image;
         }
 
         public static string getImage() {
-            using (SqlConnection con = new SqlConnection(connectionString)) {
-                con.Open();
-                var sql = @"SELECT * FROM player_data";
-                using (var cmd = new SqlCommand(sql, con)) {
-                    using (var rdr = cmd.ExecuteReader()) {
-                        while (rdr.Read()) {
-                            try {
-                                var x = Convert.ToString(rdr["image"]);
-                                if (x == "null") {
-                                    x = null;
-                                }
-                                return x;
-                            } catch (Exception x) { }
-                        }
-                        return null;
-                    }
-                }
-            }
+            //using (SqlConnection con = new SqlConnection(connectionString)) {
+            //    con.Open();
+            //    var sql = @"SELECT * FROM player_data";
+            //    using (var cmd = new SqlCommand(sql, con)) {
+            //        using (var rdr = cmd.ExecuteReader()) {
+            //            while (rdr.Read()) {
+            //                try {
+            //                    var x = Convert.ToString(rdr["image"]);
+            //                    if (x == "null") {
+            //                        x = null;
+            //                    }
+            //                    return x;
+            //                } catch (Exception x) { }
+            //            }
+            //            return null;
+            //        }
+            //    }
+            //}
+            return Properties.Settings.Default.Pfp;
         }
 
         public async void DownloadAndSet() {
@@ -150,33 +156,35 @@ namespace DiceGame {
         }
 
         private string getLoginString() {
-            using (SqlConnection con = new SqlConnection(connectionString)) {
-                con.Open();
-                var sql = @"SELECT * FROM player_data";
-                using (var cmd = new SqlCommand(sql, con)) {
-                    using (var rdr = cmd.ExecuteReader()) {
-                        while (rdr.Read()) {
-                            try {
-                                var x = Convert.ToString(rdr["login_string"]);
-                                return x;
-                            } catch (Exception x) { }
-                        }
-                        return null;
-                    }
-                }
-            }
+            //using (SqlConnection con = new SqlConnection(connectionString)) {
+            //    con.Open();
+            //    var sql = @"SELECT * FROM player_data";
+            //    using (var cmd = new SqlCommand(sql, con)) {
+            //        using (var rdr = cmd.ExecuteReader()) {
+            //            while (rdr.Read()) {
+            //                try {
+            //                    var x = Convert.ToString(rdr["login_string"]);
+            //                    return x;
+            //                } catch (Exception x) { }
+            //            }
+            //            return null;
+            //        }
+            //    }
+            //}
+            return Properties.Settings.Default.login_string;
         }
 
         private void setLoginString(string _login_string) {
-            using (SqlConnection con = new SqlConnection(connectionString)) {
-                con.Open();
-                var sql = @"UPDATE player_data SET login_string = '" + _login_string + "' WHERE Id = 0";
-                using (var cmd = new SqlCommand(sql, con)) {
-                    cmd.Prepare();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            Console.WriteLine("Login string: " + getLoginString());
+            //using (SqlConnection con = new SqlConnection(connectionString)) {
+            //    con.Open();
+            //    var sql = @"UPDATE player_data SET login_string = '" + _login_string + "' WHERE Id = 0";
+            //    using (var cmd = new SqlCommand(sql, con)) {
+            //        cmd.Prepare();
+            //        cmd.ExecuteNonQuery();
+            //    }
+            //}
+            //Console.WriteLine("Login string: " + getLoginString());
+            Properties.Settings.Default.login_string = _login_string;
         }
 
         //public void Upload(int _money) {

@@ -226,6 +226,10 @@ namespace DiceGame {
             Application.Exit();
         }
 
+        private void quit_Click(object sender, EventArgs e) {
+            Close();
+        }
+
         class ServerComponents {
             private GameMain gamemain;
             public ServerComponents(GameMain _gamemain) {
@@ -312,6 +316,7 @@ namespace DiceGame {
                                         switch (player.status) {
                                             case "Lost Game":
                                                 gamemain.oldstatus.Text = "Lost the Game!";
+                                                gamemain.oldstatus.BackColor = Color.Yellow;
                                                 Alert.ShowDialog("You lost the game!", "You Lost");
                                                 break;
                                             case "Lost Bet":

@@ -75,6 +75,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.MainTable = new System.Windows.Forms.TableLayoutPanel();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.quit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
             this.tableTable.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -245,6 +246,7 @@
             this.tableTable.Controls.Add(this.label1, 2, 0);
             this.tableTable.Controls.Add(this.pictureBox1, 4, 0);
             this.tableTable.Controls.Add(this.tableLayoutPanel1, 0, 0);
+            this.tableTable.Controls.Add(this.quit, 0, 3);
             this.tableTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableTable.Location = new System.Drawing.Point(2, 2);
             this.tableTable.Margin = new System.Windows.Forms.Padding(2);
@@ -282,7 +284,7 @@
             // 
             // oldstatus
             // 
-            this.oldstatus.BackColor = System.Drawing.Color.Yellow;
+            this.oldstatus.BackColor = System.Drawing.Color.White;
             this.oldstatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.oldstatus.Font = new System.Drawing.Font("Arial", 20F);
             this.oldstatus.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -402,7 +404,7 @@
             this.betval.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.betval.Size = new System.Drawing.Size(200, 52);
             this.betval.TabIndex = 11;
-            this.betval.Text = "Bet $900 on:";
+            this.betval.Text = "You haven\'t bet yet.";
             this.betval.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel13
@@ -817,6 +819,17 @@
             this.MainPanel.Size = new System.Drawing.Size(1194, 691);
             this.MainPanel.TabIndex = 18;
             // 
+            // quit
+            // 
+            this.quit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.quit.Location = new System.Drawing.Point(3, 438);
+            this.quit.Name = "quit";
+            this.quit.Size = new System.Drawing.Size(193, 73);
+            this.quit.TabIndex = 20;
+            this.quit.Text = "Exit";
+            this.quit.UseVisualStyleBackColor = true;
+            this.quit.Click += new System.EventHandler(this.quit_Click);
+            // 
             // GameMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -921,6 +934,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Label oldstatus;
+        private System.Windows.Forms.Button quit;
     }
 }
 

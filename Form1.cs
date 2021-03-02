@@ -125,9 +125,7 @@ namespace DiceGame {
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
-            server.Close();
-            conn.Abort();
-            Application.Exit();
+            
         }
 
         private void button8_Click(object sender, EventArgs e) {
@@ -220,6 +218,12 @@ namespace DiceGame {
 
         private void roll_Click(object sender, EventArgs e) {
 
+        }
+
+        private void GameMain_FormClosing(object sender, FormClosingEventArgs e) {
+            server.Close();
+            conn.Abort();
+            Application.Exit();
         }
 
         class ServerComponents {

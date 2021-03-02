@@ -34,6 +34,7 @@ namespace DiceGame {
             //        cmd.ExecuteNonQuery();
             //    }
             //}
+            Properties.Settings.Default.Save();
         }
 
         public static string getUsername() {
@@ -64,6 +65,7 @@ namespace DiceGame {
             //    }
             //}
             Properties.Settings.Default.Money = _money;
+            Properties.Settings.Default.Save();
         }
 
         public static int getMoney() {
@@ -94,6 +96,7 @@ namespace DiceGame {
             //    }
             //}
             Properties.Settings.Default.Pfp = _image;
+            Properties.Settings.Default.Save();
         }
 
         public static string getImage() {
@@ -185,6 +188,7 @@ namespace DiceGame {
             //}
             //Console.WriteLine("Login string: " + getLoginString());
             Properties.Settings.Default.login_string = _login_string;
+            Properties.Settings.Default.Save();
         }
 
         //public void Upload(int _money) {

@@ -827,7 +827,7 @@
             this.Controls.Add(this.MainPanel);
             this.DoubleBuffered = true;
             this.Name = "GameMain";
-            this.Text = "HighRollers - The Legal Gambling Game";
+            this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Table)).EndInit();

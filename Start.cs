@@ -12,7 +12,6 @@ namespace DiceGame {
     public partial class Start : Form {
         public Start() {
             InitializeComponent();
-            //DatabaseConn.Init();
             playerBox1.setName(DatabaseConn.getUsername());
             playerBox1.setMoney(DatabaseConn.getMoney());
             playerBox1.setImage(DatabaseConn.getImage());

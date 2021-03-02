@@ -40,7 +40,7 @@ namespace DiceGame {
     }
 
     public class LoginData {
-        public string username = "Player";
+        public string username = "Guest";
         public int money = 10000;
         public string image;
     }

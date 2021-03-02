@@ -219,15 +219,21 @@ namespace DiceGame {
         private void roll_Click(object sender, EventArgs e) {
 
         }
+        bool fromQuitButton = false;
 
         private void GameMain_FormClosing(object sender, FormClosingEventArgs e) {
             server.Close();
             conn.Abort();
-            Application.Exit();
+            if (!fromQuitButton) {
+                Application.Exit();
+            }
+            fromQuitButton = false;
         }
 
         private void quit_Click(object sender, EventArgs e) {
+            fromQuitButton = true;
             Close();
+            new Start().Show();
         }
 
         class ServerComponents {

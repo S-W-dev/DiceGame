@@ -109,6 +109,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BetterPictureBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BetterPictureBox.Designer.cs">
+      <DependentUpon>BetterPictureBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseConn.cs" />
     <Compile Include="DatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -136,6 +142,9 @@
     <Compile Include="Start.Designer.cs">
       <DependentUpon>Start.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BetterPictureBox.resx">
+      <DependentUpon>BetterPictureBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,6 +229,12 @@
     <None Include="Resources\CGLogo3.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="1.png" />
+    <None Include="2.png" />
+    <None Include="3.png" />
+    <None Include="4.png" />
+    <None Include="5.png" />
+    <None Include="6.png" />
     <Content Include="Database.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

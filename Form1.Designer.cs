@@ -30,6 +30,7 @@
             this.bet = new System.Windows.Forms.Label();
             this.money = new System.Windows.Forms.Label();
             this.tableTable = new System.Windows.Forms.TableLayoutPanel();
+            this.Table = new System.Windows.Forms.PictureBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.oldstatus = new System.Windows.Forms.Label();
@@ -39,6 +40,7 @@
             this.timeout = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
+            this.choice = new System.Windows.Forms.PictureBox();
             this.panel14 = new System.Windows.Forms.Panel();
             this.betval = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
@@ -46,6 +48,7 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.name = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.room_code = new System.Windows.Forms.Label();
@@ -58,34 +61,34 @@
             this.choice5 = new System.Windows.Forms.Label();
             this.choice6 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.MainTable = new System.Windows.Forms.TableLayoutPanel();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.Table = new System.Windows.Forms.PictureBox();
-            this.choice = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.tableTable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.choice)).BeginInit();
             this.panel14.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.ControlsTable.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -98,9 +101,6 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.MainTable.SuspendLayout();
             this.MainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.choice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // submit
@@ -220,6 +220,18 @@
             this.tableTable.TabIndex = 15;
             this.tableTable.Paint += new System.Windows.Forms.PaintEventHandler(this.tableTable_Paint);
             // 
+            // Table
+            // 
+            this.Table.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Table.Image = global::DiceGame.Properties.Resources.table;
+            this.Table.Location = new System.Drawing.Point(332, 151);
+            this.Table.Margin = new System.Windows.Forms.Padding(0);
+            this.Table.Name = "Table";
+            this.Table.Size = new System.Drawing.Size(525, 284);
+            this.Table.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Table.TabIndex = 13;
+            this.Table.TabStop = false;
+            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.panel9);
@@ -329,6 +341,19 @@
             this.panel15.Size = new System.Drawing.Size(200, 128);
             this.panel15.TabIndex = 4;
             // 
+            // choice
+            // 
+            this.choice.BackColor = System.Drawing.Color.Transparent;
+            this.choice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.choice.Image = global::DiceGame.Properties.Resources._4;
+            this.choice.Location = new System.Drawing.Point(0, 0);
+            this.choice.Margin = new System.Windows.Forms.Padding(0);
+            this.choice.Name = "choice";
+            this.choice.Size = new System.Drawing.Size(200, 128);
+            this.choice.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.choice.TabIndex = 4;
+            this.choice.TabStop = false;
+            // 
             // panel14
             // 
             this.panel14.Controls.Add(this.betval);
@@ -415,6 +440,20 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "HighRollers";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::DiceGame.Properties.Resources.CGLogo2;
+            this.pictureBox1.Location = new System.Drawing.Point(990, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.tableTable.SetRowSpan(this.pictureBox1, 2);
+            this.pictureBox1.Size = new System.Drawing.Size(200, 151);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
             // 
             // tableLayoutPanel1
             // 
@@ -598,6 +637,20 @@
             this.panel6.Size = new System.Drawing.Size(166, 140);
             this.panel6.TabIndex = 16;
             // 
+            // button3
+            // 
+            this.button3.AutoSize = true;
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Image = global::DiceGame.Properties.Resources._3;
+            this.button3.Location = new System.Drawing.Point(0, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(166, 140);
+            this.button3.TabIndex = 3;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.button4);
@@ -607,6 +660,20 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(166, 140);
             this.panel5.TabIndex = 15;
+            // 
+            // button4
+            // 
+            this.button4.AutoSize = true;
+            this.button4.BackColor = System.Drawing.Color.White;
+            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Image = global::DiceGame.Properties.Resources._4;
+            this.button4.Location = new System.Drawing.Point(0, 0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(166, 140);
+            this.button4.TabIndex = 3;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel4
             // 
@@ -618,6 +685,20 @@
             this.panel4.Size = new System.Drawing.Size(166, 140);
             this.panel4.TabIndex = 14;
             // 
+            // button1
+            // 
+            this.button1.AutoSize = true;
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::DiceGame.Properties.Resources._1;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(166, 140);
+            this.button1.TabIndex = 3;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.button2);
@@ -627,6 +708,20 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(166, 140);
             this.panel3.TabIndex = 13;
+            // 
+            // button2
+            // 
+            this.button2.AutoSize = true;
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Image = global::DiceGame.Properties.Resources._2;
+            this.button2.Location = new System.Drawing.Point(0, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(166, 140);
+            this.button2.TabIndex = 3;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 
@@ -638,6 +733,20 @@
             this.panel1.Size = new System.Drawing.Size(166, 140);
             this.panel1.TabIndex = 11;
             // 
+            // button6
+            // 
+            this.button6.AutoSize = true;
+            this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Image = global::DiceGame.Properties.Resources._6;
+            this.button6.Location = new System.Drawing.Point(0, 0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(166, 140);
+            this.button6.TabIndex = 4;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.button5);
@@ -647,6 +756,20 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(166, 140);
             this.panel2.TabIndex = 12;
+            // 
+            // button5
+            // 
+            this.button5.AutoSize = true;
+            this.button5.BackColor = System.Drawing.Color.White;
+            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Image = global::DiceGame.Properties.Resources._5;
+            this.button5.Location = new System.Drawing.Point(0, 0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(166, 140);
+            this.button5.TabIndex = 3;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // panel7
             // 
@@ -707,129 +830,6 @@
             this.MainPanel.Size = new System.Drawing.Size(1194, 691);
             this.MainPanel.TabIndex = 18;
             // 
-            // Table
-            // 
-            this.Table.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Table.Image = global::DiceGame.Properties.Resources.table;
-            this.Table.Location = new System.Drawing.Point(332, 151);
-            this.Table.Margin = new System.Windows.Forms.Padding(0);
-            this.Table.Name = "Table";
-            this.Table.Size = new System.Drawing.Size(525, 284);
-            this.Table.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Table.TabIndex = 13;
-            this.Table.TabStop = false;
-            // 
-            // choice
-            // 
-            this.choice.BackColor = System.Drawing.Color.Transparent;
-            this.choice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.choice.Image = global::DiceGame.Properties.Resources._4;
-            this.choice.Location = new System.Drawing.Point(0, 0);
-            this.choice.Margin = new System.Windows.Forms.Padding(0);
-            this.choice.Name = "choice";
-            this.choice.Size = new System.Drawing.Size(200, 128);
-            this.choice.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.choice.TabIndex = 4;
-            this.choice.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::DiceGame.Properties.Resources.CGLogo2;
-            this.pictureBox1.Location = new System.Drawing.Point(990, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.tableTable.SetRowSpan(this.pictureBox1, 2);
-            this.pictureBox1.Size = new System.Drawing.Size(200, 151);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 17;
-            this.pictureBox1.TabStop = false;
-            // 
-            // button3
-            // 
-            this.button3.AutoSize = true;
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Image = global::DiceGame.Properties.Resources.dice_three;
-            this.button3.Location = new System.Drawing.Point(0, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(166, 140);
-            this.button3.TabIndex = 3;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.AutoSize = true;
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Image = global::DiceGame.Properties.Resources.dice_four;
-            this.button4.Location = new System.Drawing.Point(0, 0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(166, 140);
-            this.button4.TabIndex = 3;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button1
-            // 
-            this.button1.AutoSize = true;
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::DiceGame.Properties.Resources.dice_one;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(166, 140);
-            this.button1.TabIndex = 3;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.AutoSize = true;
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = global::DiceGame.Properties.Resources.dice_two;
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(166, 140);
-            this.button2.TabIndex = 3;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button6
-            // 
-            this.button6.AutoSize = true;
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Image = global::DiceGame.Properties.Resources.dice_six;
-            this.button6.Location = new System.Drawing.Point(0, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(166, 140);
-            this.button6.TabIndex = 4;
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button5
-            // 
-            this.button5.AutoSize = true;
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Image = global::DiceGame.Properties.Resources.dice_five;
-            this.button5.Location = new System.Drawing.Point(0, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(166, 140);
-            this.button5.TabIndex = 3;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // GameMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -846,15 +846,18 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableTable.ResumeLayout(false);
             this.tableTable.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Table)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.choice)).EndInit();
             this.panel14.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ControlsTable.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -874,9 +877,6 @@
             this.tableLayoutPanel2.PerformLayout();
             this.MainTable.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Table)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.choice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

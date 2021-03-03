@@ -18,11 +18,12 @@ namespace DiceGame
         public BetterPictureBox()
         {
             InitializeComponent();
+            Image = Properties.Resources.CGLogo;
         }
 
         private void BetterPictureBox_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawImage(Image, Location);
+            e.Graphics.DrawImage(Image, new Point(Location.X, Location.Y+100));
         }
     }
 }

@@ -47,11 +47,11 @@ namespace DiceGame
                 var message = new ClientMessage.JoinMessage();
                 message.room_code = Prompt.ShowDialog("Enter the room code", "Prompt");
                 var message1 = JsonConvert.SerializeObject(message);
-                Console.WriteLine(message1);
+                //Console.WriteLine(message1);
                 ServerComponents.SendMessage(server, message1);
             }
 
-            Console.WriteLine("ORIGINAL SIZE: " + Width);
+            //Console.WriteLine("ORIGINAL SIZE: " + Width);
         }
 
         protected override void WndProc(ref Message message)
@@ -85,9 +85,9 @@ namespace DiceGame
             tableTable.ColumnStyles[2].Width = 700f / 1592f * MainPanel.Width;
             tableTable.RowStyles[2].Height = 350f / 850f * MainPanel.Height;
 
-            Console.WriteLine(Table.Location);
+            //Console.WriteLine(Table.Location);
 
-            Console.WriteLine("LOG 1: " + MainPanel.Width);
+            //Console.WriteLine("LOG 1: " + MainPanel.Width);
 
             setChoice(1);
 
@@ -120,14 +120,14 @@ namespace DiceGame
                                 new int[][] { new int[] { -120, 225 }, new int[] { 0, -225 }, new int[] { -450, 0 }, new int[] { 450, 0 }, new int[] { 120, 225 }, new int[] { -380, -170 }, new int[] { 380, -170 } },
                                 new int[][] { new int[] { 0, 225 }, new int[] { 0, -225 }, new int[] { -450, 0 }, new int[] { 450, 0 }, new int[] { 380, 170 }, new int[] { -380, -170 }, new int[] { 380, -170 }, new int[] { -380, 170 } }
                                };
-            Console.WriteLine("LOG 2: " + MainPanel.Width);
+            //Console.WriteLine("LOG 2: " + MainPanel.Width);
             for (var i = 0; i < pBoxes.Count; i++)
             {
                 pBoxes[i].UpdateScale(MainPanel.Width, MainPanel.Height);
                 pBoxes[i].setPosition((int)(DefaultPositions[pBoxes.Count - 1][i][0] / 1592f * MainPanel.Width) + tableCenterX, tableCenterY - (int)(DefaultPositions[pBoxes.Count - 1][i][1] / 850f * MainPanel.Height));
                 //pBoxes[i].Location = new Point(i * 100, 0);
                 pBoxes[i].setImage(game.players[i].image);
-                Console.WriteLine(game.players[i].image);
+                //Console.WriteLine(game.players[i].image);
                 pBoxes[i].setMoney(game.players[i].money);
                 pBoxes[i].setName(game.players[i].name);
                 pBoxes[i].setStatus(game.players[i].status);
@@ -282,7 +282,7 @@ namespace DiceGame
                 using (var ws = new WebSocket("ws://concretegames.net:667/socket/?EIO=2&transport=websocket"))
                 {
                     GameMain.server = ws;
-                    Console.WriteLine(ws);
+                    //Console.WriteLine(ws);
                     ws.OnMessage += (sender, e) =>
                     {
                         if (e.Data == "connected")
@@ -410,23 +410,23 @@ namespace DiceGame
                                         }
 
                                     }
-                                    catch (Exception x)
+                                    catch (Exception)
                                     {
-                                        Console.WriteLine(x);
+                                        //Console.WriteLine(x);
                                     }
                                 });
                             }
-                            catch (Exception x)
+                            catch (Exception)
                             {
-                                Console.WriteLine(x);
+                                //Console.WriteLine(x);
                             }
                         }
 
                     };
                     ws.OnError += (sender, e) =>
                     {
-                        Console.WriteLine("An error occoured with the websocket: " + e.Message);
-                        Console.WriteLine(sender);
+                        Console.WriteLine("Error: " + e.Message);
+                        //Console.WriteLine(sender);
                     };
                     ws.OnOpen += (sender, e) =>
                     {

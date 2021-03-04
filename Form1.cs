@@ -22,6 +22,8 @@ namespace DiceGame
         public static Player player;
         public static UpdateMessage game;
 
+        private Image BackgroundImage = null;
+
         int currentBet = 100, currentChoice = 0;
 
         Thread conn;
@@ -346,13 +348,14 @@ namespace DiceGame
 
                                     try
                                     {
-                                        var rollpb = new BetterPictureBox();
+                                        var rollpb = new PictureBox();
                                         rollpb.Size = new Size(130, 130);
                                         rollpb.Location = new Point((gamemain.Table.Location.X + gamemain.Table.Width / 2) - rollpb.Width / 2, (gamemain.Table.Location.Y + gamemain.Table.Height / 2) - rollpb.Height / 2);
                                         rollpb.Name = "roll";
                                         rollpb.Parent = gamemain.MainPanel;
                                         rollpb.BackColor = Color.Transparent;
                                         rollpb.Image = DiceImages[1];
+                                        rollpb.BackgroundImage = gamemain.BackgroundImage;
                                         gamemain.Controls.Add(rollpb);
                                         rollpb.Show();
                                         rollpb.BringToFront();

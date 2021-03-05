@@ -715,3 +715,4 @@ C:\Users\14356\Desktop\Coding\DiceGame\DiceGame\obj\Debug\DiceGame.exe
 C:\Users\14356\Desktop\Coding\DiceGame\DiceGame\obj\Debug\DiceGame.pdb
 C:\Users\14356\Desktop\Coding\DiceGame\DiceGame\obj\Debug\DiceGame.BetterPictureBox.resources
 C:\Users\25shewmwalj\source\repos\dicegame2\obj\Debug\DiceGame.BetterPictureBox.resources
+D:\Repos\DiceGame\obj\Debug\DiceGame.BetterPictureBox.resources

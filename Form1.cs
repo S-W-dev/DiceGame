@@ -355,6 +355,7 @@ namespace DiceGame
                                         rollpb.Parent = gamemain.MainPanel;
                                         rollpb.BackColor = Color.Transparent;
                                         rollpb.Image = DiceImages[1];
+                                        rollpb.SizeMode = PictureBoxSizeMode.StretchImage;
                                         rollpb.BackgroundImage = gamemain.BackgroundImage;
                                         gamemain.Controls.Add(rollpb);
                                         rollpb.Show();

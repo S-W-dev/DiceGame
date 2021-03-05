@@ -281,8 +281,7 @@ namespace DiceGame
 
             public void connection()
             {
-                using (var ws = new WebSocket("ws://concretegames.net:667/socket/?EIO=2&transport=websocket"))
-                {
+                var ws = new WebSocket("ws://concretegames.net:667/socket/?EIO=2&transport=websocket");
                     GameMain.server = ws;
                     //Console.WriteLine(ws);
                     ws.OnMessage += (sender, e) =>
@@ -442,8 +441,7 @@ namespace DiceGame
                         if (!gamemain.fromQuitButton) gamemain.quit_Click(sender, e);
                         
                     };
-                    Console.ReadKey(true);
-                }
+                    //Console.ReadKey(true);
             }
 
             public static void SendMessage(WebSocket ws, string message)
